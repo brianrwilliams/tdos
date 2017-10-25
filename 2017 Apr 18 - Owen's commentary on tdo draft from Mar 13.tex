@@ -1,0 +1,1571 @@
+\documentclass[10pt]{amsart}
+
+\usepackage{macros}
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+\def\owen{\textcolor{red}{OG: }\textcolor{red}}
+\def\ryan{\textcolor{green}{RG: }\textcolor{green}}
+
+\def\Diff{{\rm Diff}}
+\def\hA{\Hat{A}}
+\def\TDO{{\rm TDO}}
+\def\cloc{{\rm C}_{\rm loc}}
+\def\Dens{{\rm Dens}}
+\def\cU{\mathcal{U}}
+\def\id{{\rm id}}
+\def\hsym{\Hat{\rm Sym}}
+\def\Tens{{\rm Tens}}
+
+\title{One-dimensional Chern-Simons and sheaves of differential operators}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\owen{It should be "Chern-Simons {\em theory}", as otherwise we're describing the love child of Jim and Shing-Shen? Also, I think we should never have used CS for our 1D work. It's more accurately viewed as a BF-type theory. Perhaps "A one-dimensional AKSZ $\sigma$-model and sheaves of differential operators"?}
+
+\section{Introduction}
+
+\owen{I don't quite follow why we use the overall architecture of the paper. I think we could merge sections 2 and 3 into a larger section called "twisted differential operators by formal geometry". We would then have subsections about GK descent etc. Not sure that we need to discuss Lie algebroids, as that seems above our level of generality (unless we change the focus of the paper to include those examples). This rearrangement might also fix some oddities of the current order: we could talk about extended descent right after GK descent, rather than squeezing it between a discussion of Lie algebroids and descent of TDOs.}
+
+\owen{Later thought: I think we should have a first section where we spell out the main argument modulo the details of the construction. That is, we quickly explain the result of Bezrukavnikov-Kaledin (and indicate we'll rephrase in terms more congenial for differential geometry) and then how we can do a BV construction whose associated factorization algebra recovers the BK method.}
+
+\section{Formal Geometry: Gelfand-Kazhdan Descent}
+
+\owen{There should be a paragraph or two here that explains what the section is about. I suppose it should say that our primary goal is to articulate a version of Gelfand-Kazhdan formal geometry. We can reference GK, Bezrukavnikov-Kaledin, Calaque et al, Kontsevich, and others.\\
+It also feels to me like we could simply state the main result of BK somewhere toward the beginning and explain that we'll rephrase in a slightly modified language better suited to differential geometry.}
+
+\subsection{Torsors and Descent}
+
+
+\subsubsection{Harish-Chandra pairs and modules}
+Let $\mathbb{F} = \RR$ or $\CC$. 
+\owen{I think this is silly. Let's just say we work over $\CC$ but that one can easily modify most constructions to work over the reals.}
+All Lie algebras and Lie groups will be defined over $\FF$. 
+\owen{With respect to groups, I find this kind of weird.}
+For $G$ a Lie group, we use $\Lie(G)$ to denote its associated Lie algebra, which can be identified with the tangent space of the identity element.
+To start, we work with finite-dimensional groups and algebras, but we will eventually discuss certain infinite-dimensional examples.
+Unless explicitly indicated otherwise, groups and algebras are finite-dimensional.
+ 
+\begin{dfn} 
+A {\em Harish-Chandra pair} (or HC pair) is a pair $(\fg, K)$ where $\fg$ is a Lie algebra and $K$ is a Lie group together with
+\begin{itemize}
+\item[(i)] an action of $K$ on $\fg$, $\rho_K : K \to {\rm Aut}(\fg)$
+\item[(ii)] an injective Lie algebra map $i : {\rm Lie}(K) \hookrightarrow \fg$
+\end{itemize}
+such that the action of $\Lie(K)$ on $\fg$ induced by $\rho_K$,
+\ben
+{\rm Lie}(\rho_K) : {\rm Lie}(K) \to {\rm Der}(\fg),
+\een
+is the adjoint action induced from the embedding $i: {\rm Lie}(K) \hookrightarrow \fg$.
+\end{dfn}
+
+\begin{ex} 
+\begin{itemize} 
+\item[(1)] If $G$ is a Lie group, then the pair $({\rm Lie}(G), G)$ is a HC pair. 
+\item[(2)] If $G$ is a Lie group and $K$ is a closed subgroup, then
+  the pair $({\rm Lie}(G), K)$ is a HC pair. 
+\end{itemize}
+\end{ex}
+%
+%\begin{dfn} A {\em morphism of Harish-Chandra pairs} $F: (\fg, K) \to (\fg',K')$ is 
+%\begin{itemize}
+%\item[(i)] a map of Lie algebras $\phi : \fg \to \fg'$ and
+%\item[(ii)] a map of Lie groups $f : K \to K'$
+%\end{itemize}
+%such that the diagram in Lie algebras
+%\ben
+%\xymatrix{
+%{\rm Lie}(K) \ar[r]^-{{\rm Lie}(f)} \ar[d]_-{i} & {\rm Lie}(K') \ar[d]_-{i'} \\
+%\fg \ar[r]^-{\phi} & \fg' 
+%}
+%\een
+%commutes. 
+%\end{dfn}
+%
+%Let $\pairs_\FF$ denote this category of HC pairs. 
+
+%Equivalently, this category can be described as follows. Let ${\rm LieGrp}_{\mathbb{F}}$ be the category of Lie groups and ${\rm Lie}_{\mathbb{F}}$ be the category of Lie algebras over $\FF$. 
+%Define the category ${\rm Lie}_{\FF}^{\rm inj}$ whose objects are injective maps of Lie algebras $\fh \hookrightarrow \fg$ and whose morphisms are the obvious commuting squares. There is a forgetful functor ${\rm Lie}_\FF^{\rm inj} \to {\rm Lie}_\FF$ that sends an object $\fh \hookrightarrow \fg$ to the source Lie algebra $\fh$. 
+%
+%\brian{Then, $\pairs_\FF$ is the categorical pull-back
+%\ben
+%\xymatrix{
+%\pairs_\FF \ar[r] \ar[d] & {\rm LieGrp}_{\mathbb{F}} \ar[d]^-{\rm Lie} \\
+%{\rm Lie}^{\rm inj}_{\FF} \ar[r]^-{\rm forget} & {\rm Lie}_{\FF} . 
+%}
+%\een
+%BAD: This is a little funky, because I have no condition that the action of ${\rm Lie}(K)$ on $\fg$ agrees with the adjoint action. Need to fix this, any ideas?}
+
+Fix a HC pair $(\fg,K)$. In this section we set up the notion of a module for~$(\fg,K)$. 
+Below, we discuss modules in the category of vector spaces, but the definition is easily generalized to $\FF$-linear symmetric monoidal categories.
+
+\begin{dfn} \label{hcmod}
+A {\em $(\fg,K)$-module} is a vector space $V$ together with 
+\begin{itemize}
+\item[(i)] a Lie algebra map $\rho_\fg : \fg \to {\rm End}(V)$ and
+\item[(ii)] a Lie group map $\rho_K : K \to \GL(V)$ 
+\end{itemize}
+such that the composition
+\ben
+\xymatrix{
+{\rm Lie}(K) \ar[r]^-{i} & \fg \ar[r]^-{\rho_\fg} & {\rm End}(V)
+}
+\een
+equals ${\rm Lie}(\rho_K)$. 
+\end{dfn}
+
+
+A {\em morphism of $(\fg,K)$-modules} is a linear map intertwining the actions of $\fg$ and $K$.
+
+Denote the category of $(\fg,K)$-modules by $\Mod_{(\fg,K)}$.
+Denote by $\Mod_{(\fg,K)}^{fin}$ the full subcategory whose objects consist of modules whose underlying vector space is finite-dimensional.
+\owen{Visually, I dislike having several letters in math formatting, like the superscript `fin' above. We should consider fixing that throughout the text.}
+
+\subsubsection{Bundles}
+
+We will need the analog of a torsor for a pair $(\fg,K)$ over a
+manifold $X$.
+
+
+\begin{dfn} \label{gkbun}
+A {\em $(\fg,K)$-principal bundle with flat connection} (or more concisely, flat $(\fg,K)$-bundle) over $X$ is 
+\begin{itemize}
+\item[(i)] a principal $K$-bundle $P \to X$ and
+\item[(ii)] a $K$-invariant $\fg$-valued one-form on $\omega \in \Omega^1(P; \fg)$, 
+\end{itemize}
+such that 
+\begin{itemize}
+\item[(1)] for all $a \in {\rm Lie}(K)$, we have $\omega(\xi_a) = a$ where $\xi_a \in \cX(P)$ denotes the induced vector field and 
+\item[(2)] $\omega$ satisfies the Maurer-Cartan equation
+\ben
+\d_{dR} \omega + \frac{1}{2}[\omega,\omega] = 0
+\een
+where the bracket is taken in the Lie algebra $\fg$. 
+\end{itemize}
+\end{dfn}
+
+The condition $\omega(\xi_a) = a$ simply says that $\omega$ restricts to a connection one-form for the principal bundle $P \to X$. 
+The Maurer-Cartan condition says that $\omega$ is {\em flat}. 
+In particular, if $\fg = \Lie(K)$, then we recover the usual notion of a principal $K$-bundle together with a flat connection, i.e., a principal bundle for the discrete group $K^\delta$. 
+
+
+Note that if there is an inclusion of Lie groups $K \hookrightarrow G$ inducing $\Lie(K) \hookrightarrow \Lie(G) = \fg$, 
+then this data is a flat \owen{why is flat here?} $G$-bundle along with a reduction of structure group to a flat $K$-bundle.
+This Harish-Chandra notion is useful replacement when the map $i:
+\Lie(K) \to \fg$ does not integrate to a map of Lie groups. 
+
+\begin{ex} 
+The most important example for us is the case $\fg = \Vect$, the Lie algebra
+of formal vector fields \owen{We've not yet introduced that notation or said what these mean!}, and $K = \GL_n$. In fact, $\Vect$ is not the
+Lie algebra of any Lie group. The pair $(\Vect,\GL_n)$ is the
+fundamental for Gelfand-Kazhdan descent defined in the following sections.
+\end{ex}
+
+\begin{dfn}
+A {\em morphism of flat $(\fg,K)$-bundles} $(P \to X, \omega) \to (P' \to X', \omega')$ is a map of $K$-principal bundles
+\ben
+\xymatrix{
+P \ar[r]^F \ar[d] & P' \ar[d] \\
+X \ar[r]^f & X'
+}
+\een
+such that $F^* \omega' = \omega$. 
+
+Denote the category of flat $(\fg,K)$-bundles by $\Loc_{(\fg,K)}$. 
+\end{dfn}
+
+Note that there is a forgetful functor from  $\Loc_{(\fg,K)}$ to ${\rm
+  Man}$, the category of manifolds which is either (a) smooth manifolds
+with smooth maps or (b) complex manifolds with holomorphic maps. 
+\owen{It's unwise to bury this comment here. 
+We should probably fix a context at the beginning. 
+We can remark that one can run most of the game in the other context as well since so much of this is formal.}
+As flat bundles pull back along maps of the underlying manifolds,
+this functor is a cartesian fibration.
+
+\subsubsection{Descent}
+
+
+In this section, we recall \owen{from where?} the functor of {\em Harish-Chandra descent}
+\[
+\desc: \Loc_{(\fg,K)}^\op \times \Mod_{(\fg,K)}^{fin} \to {\rm VB}_{flat},
+\]
+where ${\rm VB}_{flat}$ denotes the cartesian fibration whose fiber
+over a manifold $X$ is the category of flat finite dimensional vector
+bundles on $X$. It is analogous to the associated bundle construction.
+\owen{Perhaps it would be better to say something like "We now describe the functor of ..." and later "a more extensive discussion can be found in CDO."}
+
+\owen{It helps to consider the functors obtained by fixing one input.}
+Each flat $(\fg,K)$-bundle on $X$ produces a family of local systems on $X$, and 
+these are natural under pullback of bundles.
+Similarly, each $(\fg,K)$-module produces a functor from flat $(\fg,K)$-bundles to local systems over the site of all manifolds.
+
+%We will also describe the characteristic map, which is a natural transformation 
+%\[
+%\ch: \clie^*(\fg,K; -) \Rightarrow \Omega^*(-,\desc(-)),
+%\]
+%where $\clie^*(\fg,K; -)$ denotes the relative Lie algebra cochains functor (it is independent of the bundle variable) and 
+%where $\Omega^*(-,\desc(-))$ denotes the de Rham complex of the flat bundle produced by $\desc$.
+%This natural transformation encodes the secondary characteristic classes of these flat bundles produced
+
+%\subsubsection{Basic forms}
+%
+%There is a model for the associated bundle construction that is useful
+%for our purposes. Let $V$ be a finite dimensional $K$-representation. Denote by $\ul{V}$ the trivial vector bundle on $P$ with fiber $V$. Sections of this bundle $\Gamma_P(V)$ have the structure of a $K$-representation by
+%\ben
+%A \cdot (f\tensor v) := (A \cdot f) \tensor (A \cdot v) \;\; , \;\; A \in K, \; f \in \cO(V)\; , v \in V .
+%\een
+%Every $K$-invariant section $f : P \to V$ induces a section $s(f): X \to V_X = P \times^K V = (P \times V) / K$,
+%where the value of $s(f)$ at $x \in X$ is the $K$-equivalence class $[(p,f(p)]$, with $p \in \pi^{-1}(x) \cong K$.
+%That is, there is a natural map 
+%\ben
+%s : \Gamma_P(\ul{V})^K \to \Gamma_X(V_X) 
+%\een
+%and it is an isomorphism of $\cO(X)$-modules. \owen{We should be careful with this $\cO$ notation.}
+%A $K$-invariant section $f$ of $\ul{V} \to P$ also satisfies the infinitesimal version of invariance: 
+%\ben
+%(Y \cdot f)\tensor v + f \tensor {\rm Lie}(\rho)(Y) \cdot v = 0 
+%\een
+%for any $Y \in {\rm Lie}(K)$.
+%
+%There is a similiar statement for differential forms with values in the bundle $V_X$. Let $\Omega^k(P ; \ul{V}) = \Omega^k(P) \tensor V$ denote the space of $k$-forms on $P$ with values in the trivial bundle $\ul{V}$. Given $\alpha \in \Omega^1(X ; V_X)$, its pull-back along the projection $\pi: P \to X$ is annihilated by any vertical vector field on $P$. In general, if $\alpha \in \Omega^k(X; V_X)$, then $i_Y(\pi^*\alpha) = 0$ for all $Y \in {\rm Lie}(K)$.
+%
+%\begin{dfn} A $k$-form $\alpha \in \Omega^k(P; \ul{V})$ is called {\em basic} if 
+%\begin{itemize}
+%\item[(i)] it is $K$-invariant: $L_Y \alpha + \rho(Y) \cdot \alpha = 0 $ for all $Y \in {\rm Lie}(K)$ and
+%\item[(ii)] it vanishes on vertical vector fields: $i_Y \alpha = 0$ for all $Y \in {\rm Lie}(K)$. 
+%\end{itemize}
+%\end{dfn}
+%
+%Denote the subspace of basic $k$-forms by $\Omega^k(P; \ul{V})_{bas}$. Just as with sections, there is a natural isomorphism
+%\ben
+%s : \Omega^k(P; \ul{V})_{bas} \to \Omega^k(X; V_X) 
+%\een
+%between basic $k$-forms and $k$-forms on $X$ with values in the associated bundle.
+%In fact, $\Omega^{\#}(P; \ul{V})_{bas}$ forms a graded subalgebra of $\Omega^{\#}(P; \ul{V})$ and the isomorphism $s$ extends to an isomorphism of graded algebras $\Omega^{\#}(P; \ul{V}) \cong \Omega^{\#}(X; V_X)$.
+%
+%It is manifest that this construction of basic forms is natural in maps of $(\fg,K)$-bundles: basic forms pull back to basic forms along maps of bundles.
+
+
+Fix a $(\fg,K)$-bundle $P \to X$ with connection one-form $\omega \in \Omega^1(P; \fg)$. Fix a $(\fg,K)$-module $V$ with action maps $\rho_K$ and $\rho_{\fg}$. The subalgebra of basic forms \owen{Have we defined these? Perhaps we should}
+\ben
+\Omega^{\#}(P; \ul{V})_{bas} \subset \Omega^{\#}(P; \ul{V})
+\een
+only uses the data of the $K$-representation. The $\fg$-module structure induces an operator
+\ben
+\rho_\fg(\omega) : \Omega^k(P; \ul{V}) \to \Omega^{k+1}(P; \ul{V})
+\een
+for each $k$. Let $\nabla^{P,V}$ denote the operator
+\ben
+\nabla^{P,V} := \d_{dR,P} + \rho_\fg(\omega) : \Omega^k(P; \ul{V}) \to \Omega^{k+1}(P; \ul{V})
+\een 
+for each $k$. 
+
+A direct calculation verifies the following. 
+
+\begin{lemma} 
+The operator $\nabla^{P,V}$ is a differential on the subalgebra of basic forms.
+Under the isomorphism $s: \Omega^{\#}(P; \ul{V}) \cong \Omega^{\#}(X;
+V_X)$, the cochain complex $(\Omega^{\#}(P; \ul{V}), \nabla^V)$ is a
+dg module over $\Omega^*(X)$. 
+\end{lemma}
+
+%\begin{itemize}
+%\item[(1)] $\nabla^V$ preserves the sub-algebra of basic forms and so determines an operator
+%\ben
+%\nabla^V : \Omega^k(X; V_X) \to \Omega^{k+1}(X; V_X) .
+%\een
+%\item[(2)] If $f \in \cO(X) \cong \cO(P)^K$ and $\alpha \in \Omega^k(P; \ul{V})_{bas} \cong \Omega^k(X; V_X)$ then
+%\ben
+%\nabla^V(f \cdot \alpha) = (\d_{dR} f) \tensor \alpha + f \tensor \nabla^V \alpha .
+%\een
+%\item[(3)] It is square-zero, $(\nabla^V)^2 = 0$. 
+%\end{itemize}
+%$
+
+\begin{dfn}
+The bundle $V_X = P \times^X V$ with flat connection $\nabla^{P,V}$ is
+the {\em associated local system} to the flat $(\fg,K)$-bundle $P \to X$ and the finite-dimensional $(\fg,K)$-representation $V$.
+Its {\em de Rham complex} is
+\[
+\bdesc((P \to X), V) := \left(\Omega^*(P; \ul{V})_{bas}, \nabla^{P,V}\right),
+\]
+whose zeroth cohomology is the horizontal sections of the local system.
+\end{dfn}
+
+As the construction of the flat connection $\nabla^{P,V}$ intertwines naturally with maps of $(\fg,K)$-bundles, we obtain the following functor.
+
+\begin{dfn}
+The {\em $(\fg,K)$-descent functor} 
+\[
+\desc: \Loc_{(\fg,K)}^\op \times \Mod_{(\fg,K)} \to {\rm VB}_{flat}
+\]
+sends $(P \to X, V)$ to $(V_X,\nabla^{P,V})$.
+\end{dfn}
+
+To every flat vector bundle we can associate a local system by taking
+the horizontal sections. We denote by $\sdesc$ the
+composition of the functor $\desc$ with taking horizontal
+sections. Explicitly, $\sdesc$ is the zeroth cohomology of the de
+Rham complex of the flat vector bundle given by descent. In other words, it is
+the zeroth cohomology of the complex $\left(\Omega^*(P;
+  \ul{V})_{bas}, \nabla^{P,V}\right)$.
+  \owen{This paragraph seems like it should be a definition.}
+
+%\begin{ex}
+%A special role is played by the $(\fg,K)$-bundles over a point. 
+%In this case, the only $K$-bundle is trivial, and the composite functor
+%\[
+%\begin{array}{ccc}
+%\Mod_{(\fg,K)}&  \to & \Mod^{dg}_\FF \\
+%V & \mapsto & \clie^*(\fg,K;V)
+%\end{array}
+%\]
+%agrees with relative cochains computing the relative Lie algebra cohomology of $V$. 
+%
+%We recall the definition of relative Lie algebra cohomology as it will
+%appear later. Recall, the {\it absolute} Lie algebra cohomology with
+%values in $V$ is
+%computed by the Chevalley-Eilenberg complex
+%\ben
+%\clie^*(\fg ; V) := \left({\rm Hom}_{\FF} (\Sym(\fg[1]), V), \d \right)
+%\een
+%where the differential encodes both the Lie bracket of $\fg$ and the action of
+%$\fg$ on $V$. Now, let $(\fg, K)$ be a pair. The relative Chevalley-Eilenberg complex is a subcomplex
+%of the absolute Chevalley-Eilenberg complex. It consists of
+%$K$-invariant functions
+%$\phi : \Sym^k(\fg[1]) \to V$ that have the property that
+%$\phi(x_1,\ldots, x_k) = 0$ if there exists $i$ such that $x_i \in
+%\Lie(K) \subset \fg$. One checks immediately that this is a
+%subcomplex.
+%\end{ex}
+
+\begin{ex} 
+Let $K$ be a Lie group and $\fk$ its Lie algebra, so that $(\fk,K)$ is a HC pair.
+There is an equivalence of categories
+\ben
+\Mod^{fin}_{(\fk,K)} \cong {\rm Rep}^{fin}_K .
+\een
+A $(\fk, K)$-principal bundle with flat connection is the same thing
+as an ordinary principal $K$-bundle with a flat connection. Let $P \to
+X$ be such a principal $K$-bundle and $\omega \in \Omega^1(P;
+\fk)$ a {\em flat} connection. Then, the functor
+\ben
+\desc : {\rm Mod}_{(\fk,K)} \to \VB_{flat}
+\een
+is equivalent to the functor ${\rm Rep}_{K}^{fin} \to \VB_{flat}$ that sends a $K$-representation $V$ to the de Rham
+complex of the associated bundle $V_X = P \times^K V$ equipped with
+its induced flat connection.
+\end{ex}
+
+\subsubsection{The characteristic map}
+
+Recall that on a principal $K$-bundle $P \to X$ with connection one-form $\omega \in \Omega^1(P,\ul{\Lie(K)})$, 
+the one-form provides a linear map $\omega^*: \Lie(K)^* \to \Omega^1(P)$.
+If the connection is flat (i.e., satisfies the Maurer-Cartan equation), 
+then $\omega^*$ extends to a map of commutative dg algebras
+\[
+\omega^*: \clie^*(\Lie(K)) \to \Omega^*(P),
+\]
+which provides characteristic classes for the flat $K$-bundle $P$.
+
+We now refine this construction to the Harish-Chandra setting.
+In this case, the connection one-form $\omega$ lives in $\Omega^1(P, \ul{\fg})$ and as it is flat,
+it provides a map of commutative dg algebras
+\[
+\omega^*: \clie^*(\fg) \to \Omega^*(P).
+\]
+But this map admits an important refinement: 
+because $\omega$ is $K$-invariant, it induces a map
+\[
+\omega^*: \clie^*(\fg,K) \to \Omega^*(P)_{bas}.
+\]
+This construction extends to associated bundles, so that for $V$ a $(\fg,K)$-module, there is a map
+\[
+\ch^{P,V} : \clie^*(\fg, K; V) \to \Omega^*(\desc((P,\omega),V)), 
+\]
+which provides characteristic classes for flat $(\fg,K)$-bundles.
+
+As these constructions manifestly intertwine with pullbacks of bundles, we have the following.
+
+\begin{dfn}
+The {\em characteristic map} is the natural transformation
+\[
+\ch: \clie^*(\fg,K; -) \Rightarrow \Omega^*(-, \desc(-,-))
+\]
+between the relative Lie algebra cohomology of a $(\fg,K)$-module and 
+the de Rham complex of its associated local system along a flat $(\fg,K)$-bundle .
+\end{dfn}
+
+\subsection{Harish-Chandra modules over the formal disk}
+
+\begin{dfn} 
+An {\em $\hO_n$-module with compatible $(\Vect, \GL_n)$-action} is a
+  vector space $\cV$ equipped with
+\begin{itemize}
+\item[(i)] the structure of a $(\Vect, \GL_n)$-module and
+\item[(ii)] the structure of a $\hO_n$-module
+\end{itemize}
+such that 
+\begin{itemize}
+\item[(1)] for all $X \in \Vect$, $f \in \hO_n$ and $v \in \cV$,
+\ben
+X(f \cdot v) = X(f) \cdot v + f \cdot (X \cdot v) 
+\een 
+and
+\item[(2)] for all $A \in \GL_n$, 
+\ben
+A (f \cdot v) = (A \cdot f) \cdot (A \cdot v),
+\een 
+where $A$ acts on $f$ by a linear change of frame.
+\end{itemize}
+\end{dfn}
+
+There is a category of $\hO_n$-modules with compatible $(\Vect, \GL_n)$-action. A morphism is a $\hO_n$-linear map of $(\Vect, \GL_n)$-modules $f : \cV \to \cV'$. We denote this category by $\Mod_{(\Vect, \GL_n)}^{\cO_n}$. 
+
+The category of {\em formal vector bundles} is the full subcategory
+\ben
+\VB_{(\Vect, \GL_n)} \subset \Mod_{(\Vect, \GL_n)}^{\cO_n}
+\een
+whose objects are finite-rank and free as $\hO_n$-modules.
+
+\owen{A construction is described next. Perhaps we should give it a name or make clear that we're changing topic a little.}
+
+Given a finite dimensional $\GL_n$-representation $V$, we get an object $\cV \in \VB_{(\Vect, \GL_n)}$ as follows. Consider the decreasing filtration of $\Vect$ by vanishing order of jets 
+\ben
+\cdots \subset {\rm W}_{n,1} \subset {\rm W}_{n,0} \subset {\rm W}_{n,-1} = {\rm W}_n .
+\een 
+The induced map ${\rm W}_{n,0} \to {\rm W}_{n,0} / {\rm W}_{n,1} \cong \gl_n$ allows us to view $V$ as a ${\rm W}_{n,0}$-module. We can then coinduce this module along the inclusion ${\rm W}_{n,0} \to {\rm W}_n$ to get a ${\rm W}_n$-module $\cV$. 
+
+There is an induced action of $\GL_n$ on $\cV$. Indeed, as a $\GL_n$-representation $\cV \cong \hO_n \tensor_{\CC} V$.
+Moreover, this action is compatible with the $\Vect$-module structure, so that $\cV$ is actually a $(\Vect, \GL_n)$-module. Moreover, $\cV$ is free as an $\hO_n$-module so that it defines a formal tensor field. Thus, the construction provides a functor
+\ben
+\Rep_{\GL_n} \to \VB_{(\Vect, \GL_n)} .
+\een
+
+\ryan{The following necessary?}
+
+\owen{The formal tensor fields are discussed at length in the work Gelfand, Fuks, Feigin, et al. I think it's good to review them, especially as they admit the most direct connection with the usual theory of characteristic classes. On the other hand, I admit that this arrangement is a little awkward. It would probably be best to have a sub(sub?)section called "formal tensor fields" where we describe this construction and assert the nice relationship with usual Chern classes for tensor bundles.}
+
+\owen{I should admit that I think we should call them "formal tensor bundles" in our text but remark that others have called them "formal tensor fields." It's weird --- to me --- to call the bundle a field, since I think of sections of the bundle as being the fields.}
+
+\begin{dfn} We denote the image of the category of finite rank
+  $\GL_n$-representations inside of $\VB_{(\Vect, \GL_n)}$ by
+  $\Tens_n$. This is the category of {\it formal tensor fields}.
+\end{dfn}
+
+\begin{ex}
+Vector fields on the formal disk form a $\hO_n$-module with compatible $(\Vect, \GL_n)$-action, which we denote $\hT_n$, where the $\GL_n$ action is the defining action on $\CC^n$ equipped with the adjoint action of $\Vect$. Similarly, we have modules of $k$-forms $\hOmega^k_{n}$ and {\it closed} $k$-forms $\hOmega^k_{n,cl}$.
+\owen{These examples are important and probably shouldn't be written quite so telegraphically.}
+\end{ex}
+
+\begin{ex}
+\ryan{Formal Weyl algebra $\hA_n$}.
+\end{ex}
+
+\subsection{Gelfand-Kazhdan descent}
+\brian{I'd like to expand on this section a bit, mostly references CDO paper}
+
+\ryan{Should say what a formal exponential map is. Probably need basics on $X^{coor}$}
+
+\owen{Agreed. You can find them in the CDO paper. This subsection should be rewritten to be in more logical order.}
+
+\begin{prop} Let $X$ be a smooth manifold and $\Fr_X$ its frame bundle. A formal exponential $\sigma$ determines the structure of
+  a $(\Vect,\GL_n)$-principal bundle with flat connection 
+\ben
+(\Fr_X, \omega^\sigma)
+\een
+where $\omega^\sigma = \sigma^* \omega^{coor} \in \Omega^1(\Fr_X ;
+\Vect)$. Moreover, any two choices of a formal exponential determine
+gauge equivalent connections. 
+\end{prop} 
+
+We refer to the pair of an $n$-dimensional smooth manifold $X$ and a formal exponential
+$\sigma$ as a Gelfand-Kazhdan structure. As in \brian{ref} these pairs
+define a category $\GK_n$ fibered over the category ${\rm Man}_n$ of
+smooth $n$-dimensional manifolds. A main construction of \brian{ref
+  CDO} is the Gelfand-Kazhdan descent functor 
+\ben
+\desc_{\GK} : \GK^{\rm op} \times \VB_{(\Vect, \GL_n)} \to
+\Pro(\VB)_{flat} .
+\een 
+It sends a Gelfand-Kazhdan structure $(X, \sigma)$ together with a
+$(\Vect, \GL_n)$-module $V$ to the pro vector bundle $\Fr_X
+\times_{\GL_n} V$ with flat connection induced from the Grothendieck
+connection $\omega^\sigma$. 
+
+The sheaf obtained from $\desc_{\GK}(\sigma, V)$ obtained by taking
+flat sections with respect to the flat connection will be denoted
+$\sdesc(\sigma, V)$. 
+
+
+\begin{lemma}\label{lem:descexact}
+The functor $\sdesc$ is exact.
+\end{lemma}
+
+\owen{Where do we need this?}
+
+\begin{proof}
+\ryan{I only see how to prove right exactness...}
+By construction, $\sdesc$ is a composition of the associated bundle (Borel) construction followed by taking flat sections.  It is standard that the Borel construction is an exact symmetric monoidal functor.  Taking flat sections is given by applying the de Rham functor and then computing zeroeth cohomology. The de Rham functor is right exact and in an abelian category ($\Pro(\VB)_{flat}$) finite coproducts and products agree, so $H^0$ preserves both.
+\end{proof}
+
+\owen{The proposition below seems to be mainly about formal tensor fields ...}
+
+\begin{prop}
+Let $V$ be a \owen{finite-dimensional?} $\GL_n$-representation and let $\cV \in \VB_{(\Vect, \GL_n)}$ be the corresponding formal \owen{tensor?} bundle.
+Then there is a natural isomorphism of flat pro-vector bundles
+\[
+\desc_\GK((\Fr(X),\omega^\sigma),\cV) \cong J^\infty(\Fr_X \times_{\GL_n} V).
+\]
+In other words, the functor of localization along the frame bundle is
+naturally isomorphic to the functor of taking $\infty$-jets of the associated bundle construction.
+\end{prop} 
+
+\begin{ex}
+Let $X$ be a manifold, equipped with a Gelfand-Kazhdan structure $\sigma$. As one would expect, we have isomorphisms of sheaves $\sdesc( \sigma, \hT_n) \cong \cT_X$ and $\sdesc( \sigma, \hOmega^k_n) \cong \Omega^k$.
+\end{ex}
+
+
+\subsection{Semi-strict descent}  \brian{Briefly recall section 13 of CDOs.}
+
+\section{TDOs from Lie algebroids}\label{sect:FormalLA}
+
+\owen{I don't quite understand the goal of this section. Do we work at the level of Lie algebroids later? I think it would be cool to do the analog of CDR by explaining the cotangent quantization of the total space of an arbitrary graded vector bundle. We could probably even do the cotangent quantization of a Lie algebroid. But I wasn't clear that it was our goal in this paper ...}
+
+\subsection{Formal Lie algebroids}
+
+\begin{dfn} A {\it formal Lie algebroid} is a $\hO_n$-module with $(\Vect, \GL_n)$-action
+  $\cL$ together with 
+\begin{itemize}
+\item[(i)] the structure of a $\CC$-linear Lie algebra on $\cL$
+  compatible with the $(\Vect, \GL_n)$-module structure 
+  \owen{so a Lie algebra object in that category?}, 
+\item[(ii)] a $\hO_n$-linear map of $(\Vect, \GL_n)$-modules
+\ben
+a : \cL \to \hT_n
+\een
+called the {\em anchor map},
+\end{itemize}
+such that for all $x, y \in \cL$ and $f \in \hO_n$,
+\ben
+[x, f \cdot y] -  f \cdot [x,y]  = \left(a(x)\cdot f\right) .
+\een
+\end{dfn}
+
+\subsubsection{Universal envelope}
+
+\owen{I don't like the phrase "universal envelope," which does not seem common. I'd rather say ``enveloping algebra'' or whatever people use in Lie algebroid world.}
+
+Let $\cL$ be a formal Lie algebroid. Consider the left $\hO_n$-module
+$\hO_n \oplus \cL$. This direct sum has a natural Lie algebra
+structure given by
+\ben
+[(f, x), (g,y)] := (a(x) \cdot f - a(y) \cdot g, [x,y]) .
+\een 
+Let $U_{\rm Lie}(\hO_n \oplus \cL)$ be the universal envelope of this
+Lie algebra. 
+
+There is a natural inclusion $i : \hO_n \oplus \cL \to U_{\rm
+  Lie}(\hO_n \oplus \cL)$. Let $\Bar{U}$ denote the subalgebra generated by
+the image $i(\hO_n \oplus \cL)$, i.e. the kernel of the natural
+augmentation $U_{\rm Lie}(\hO_n \oplus \cL) \to \RR$. 
+\owen{Clearly we should be working over $\CC$, not $\RR$. But I also find this "subalgebra" terminology confusing. Do we mean non-unital subalgebra? Otherwise it's the whole damn thing ... If we just mean the augmentation ideal, then just say that.}
+Finally, consider the ideal $I\subset \Bar{U}$ generated by
+\ben
+i(f,0) \tensor i(g,x) - i(fg, f x)  .
+\een 
+One defines the {\em enveloping algebra} of the formal Lie algebroid $\cL$ to be the quotient
+\ben
+\cU_{\hO_n} (\cL) := \Bar{U} / I .
+\een 
+\owen{If this is the main point of the section, it should be a stand-alone definition and not buried in text.}
+
+\begin{lemma} The enveloping algebra $\cU_{\hO_n} (\cL)$ is an
+  associative algebra
+  object in $\Mod_{(\Vect, \GL_n)}^{\cO}$. Moreover, if $\cL$
+  is an object in $\VB_{(\Vect, \GL_n)}$ then the enveloping algebra
+  is an associative algebra object of $\VB_{(\Vect, \GL_n)}$. 
+\end{lemma}
+
+\owen{It seems to me we're relying implicitly on a symmetric monoidal structure $\otimes_{\hO}$ on these categories. We should state that structure earlier.}
+
+\begin{ex} 
+Consider the $\hO_n$-module  $\hT_n$, which has a natural formal Lie
+  algebroid structure via the Lie bracket of vector
+  fields. The anchor map is the identity map. It is straightforward to exhibit
+  an isomorphism $\cU_{\hO_n} (\hT_n) \cong \hA_n$ of algebras in $(\Vect, \GL_n)$-modules.
+\end{ex}
+
+\begin{ex} 
+Another important class of formal Lie algebroids are given by {\it formal Atiyah algebras}.  A {\it formal Atiyah algebra} is a $\hO_n$-module $\hat{\mathfrak{A}}$ with $(\Vect, \GL_n)$-action equipped with a compatible Lie algebra structure such that
+\begin{itemize}
+\item[(i)] there is a short exact sequence 
+\[
+0 \to \hO_n \to \hat{\mathfrak{A}} \xrightarrow{a} \hT_n \to 0
+\]
+in \owen{state the category};
+\item[(ii)] for all $\alpha_1, \alpha_2 \in \hat{\mathfrak{A}}$ and $f \in \hO_n$,
+\[ [\alpha_1 , f \cdot \alpha_2 ] = (a (\alpha_1) f) \cdot \alpha_2 + f \cdot [\alpha_1 , \alpha_2]; 
+\]
+\item[(iii)] the function $1 \in \hO_n \subset \hat{\mathfrak{A}}$ is central in $\hat{\mathfrak{A}}$.
+\end{itemize}
+\end{ex}
+
+\owen{I thought these were associated with principal bundles, so I'm confused by this terminology. Are there two different uses of "Atiyah algebroid" in the literature?}
+
+\subsubsection{Descent for formal Lie algebroids}
+In this section we explain how Gelfand-Kazhdan descent behaves on formal Lie algebroids and their enveloping algebras.
+
+\begin{lemma} Let $(X,\sigma)$ be a GK structure. If $\cL$ is a formal Lie algebroid, then $\sdesc(\sigma, \cL)$ is a Lie algebroid on $X$. 
+\end{lemma} 
+
+The following special case is particularly relevant to us.
+
+\begin{cor} 
+Let $(X, \sigma)$ be a GK structure. 
+If $\hat{\mathfrak{A}}$ is a formal Atiyah algebra, then $\sdesc(\sigma, \hat{\mathfrak{A}})$ is an Atiyah algebra.
+In particular, it sits in a short exact sequence
+\[
+0 \to \cO_X \to \sdesc(\sigma, \hat{\mathfrak{A}}) \to \cT_X \to 0.
+\]
+\owen{where?}
+\end{cor}
+
+\owen{I suppose this corollary is where we're using the claim about descent being exact?}
+
+The next proposition follows from properties of the $\sdesc$ functor, specifically Lemma \ref{lem:descexact}; as $\sdesc$ is right exact, it in particular preserves finite colimits.  
+
+\owen{OK, got it. Do we need this?}
+
+\begin{prop}\label{prop:enveloping}
+ Let $\sigma$ be a GK structure on $X$. There is an isomorphism
+\ben
+\sdesc(\sigma, \cU_{\hO_n}\cL) \cong \cU_{\cO_X} (\sdesc(\sigma, \cL)) 
+\een
+of sheaves of associative algebras on~$X$.
+\end{prop}
+
+\owen{This proposition should be proved. It seems like we're saying something better here: there is a natural isomorphism between two different composite functors: we can take descend the formal enveloping algebra or we can take the enveloping algebra of the descended Lie algebroid.}
+
+An immediate corollary of this proposition and the fact that $\cU_{\hO_n} (\hT_n)
+\cong \hA_n$ is that $\sdesc(\sigma, \hA_n)$ is isomorphic to the
+sheaf of differential operators on $X$, see also corollary \ref{cor:descTDO}.
+
+\owen{This should be stated as a stand-alone corollary.}
+
+\subsection{Extended descent}
+
+We wish to extend the above construction of Gelfand-Kazhdan descent by
+an element $\alpha \in {\rm H}^1(X ; \Omega^1_{cl,X})$.
+\owen{This sentence is a bit cryptic. We don't extend the construction by a 2-form but rather work with an HC extension.}
+This will give us a formal construction of the sheaf of twisted
+differential operators for any $\alpha$ as above.
+\owen{"Formal" here is needlessly confusing. We mean that we can construct TDOs by a version of formal geometry.}
+
+Let $\hOmega^1_{n,cl}$ denote the closed one-forms on $\hD^n$.
+\owen{We should say somewhere (and at least remind here) whether we mean the cochain complex obtained by truncating the de Rham complex or the actual closed one-forms.} 
+The $(\Vect, \GL_n)$-structure comes from Lie derivative by vector fields on forms and linear
+changes of frame. From above, we know that for any
+choice of a Gelfand-Kazhdan structure $\sigma$ on $X$, we have an
+isomorphism of sheaves $\sdesc(\sigma, \hOmega^1_{n,cl}) \cong \Omega^1_{X,cl}$.
+
+Consider the extension  
+\ben
+0 \to \hOmega^1_{n,cl} \to \Vect \ltimes \hOmega^1_{n,cl} \to \Vect \to
+0 
+\een
+where 
+\ben
+[X,\omega] = L_X \omega 
+\een
+for $X$ a vector field \owen{We've already used $X$ for the manifold} and $\omega$ lives in $\hOmega^1_{n,cl}$.
+Since $\omega$ is closed this
+can be written as $L_X \omega~=~\d(\iota_X \omega)$.
+
+The Lie algebra $\Vect$ is a sub-Lie algebra of $\Vect \ltimes
+\hOmega^1_{n,cl}$. The Lie group $\GL_n$ acts on $\Vect$ by linear
+changes of frame and this action extends to an action on $\Vect \ltimes
+\hOmega^{1}_{n,cl}$. We summarize the situation as follows.
+
+\begin{lemma} 
+$(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$ forms a Harish-Chandra pair. 
+\end{lemma}
+ 
+There is a natural quotient map of HC pairs
+\ben
+(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n) \to (\Vect, \GL_n) .
+\een 
+We wish to understand lifts of the $(\Vect, \GL_n)$-bundle $(\Fr_X,
+\omega^\sigma)$ along this quotient map.
+
+For a fixed GK-structure $\sigma$, a lift is the structure of a flat $(\Vect \ltimes
+\hOmega^1_{n,cl}, \GL_n)$-principal bundle on a pair $(\Fr_X, \omega)$
+such that under the map
+\ben
+\Omega^1(\Fr_X ; \Vect \ltimes \hOmega^1_{n,cl}) \to \Omega^1(\Fr_X ;
+\Vect),
+\een
+the one-form $\omega$ is sent to $\omega^\sigma$. 
+
+\begin{prop} 
+Fix a GK-structure $\sigma$ on $X$. 
+There is a natural bijection between the following two sets:
+\begin{itemize}
+\item ${\rm H}^1(X, \hOmega^1_{X,cl}) \cong {\rm H}^2_{\dR}(X)$ and
+\item the set of lifts of the flat $(\Vect, \GL_n)$-principal bundle $(\Fr_X, \omega^\sigma)$ to a flat $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$-principal bundle, up to isomorphism.
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+Consider the sheaf of closed one-forms $\Omega^1_{X, cl}$ and its
+associated sheaf of $\infty$-jets $\sJ(\Omega^1_{X,cl})$. 
+By definition of the coordinate bundle, 
+the pull-back of $\sJ(\Omega^1_{X,cl})$ along 
+the projection $\pi^{coor} : X^{coor} \to X$ returns the
+trivial sheaf of formal closed one-forms
+\ben
+(\pi^{coor})^*\left(\sJ(\Omega^1_{X,cl})\right) \cong \ul{\hOmega^1_{n,cl}}.
+\een
+Any $\alpha \in {\rm H}^1(X ; \Omega^1_{X,cl})$ defines an element in ${\rm H}^1(X ; \sJ(\Omega^1_{X,cl}))$ 
+and hence determines an element
+\ben
+(\pi^{coor})^* \alpha \in {\rm H}^1(X^{coor} ; \ul{\hOmega^1_{n,cl}}) 
+\een 
+via pull-back to the coordinate bundle.
+In turn, this element classifies a $\hOmega^1_{n,cl}$-torsor over $X^{coor}$ that we denote $X^{coor}_\alpha$. 
+Being a torsor for a constant sheaf of abelian groups, that are contractible as topological spaces, there exists sections $\sigma_{\alpha} : X^{coor} \to X^{coor}_\alpha$. 
+\owen{This last sentence is a little hard to parse. I think "sheaf of vector spaces" would be clearer than "abelian groups." Moreover, don't we have a cochain complex here? Then contractibility sounds weirder. I think we can phrase things so it's a little less distracting and the reader can see that sections obviously exist.}
+
+Recall how one constructs the principal $(\Vect, \GL_n)$-bundle structure on $\Fr_X$ from a GK-structure $\sigma$. 
+We have a sequence of bundle maps 
+\[
+X^{coor} \to \Fr_X \to X,
+\]
+and $\sigma$ determines a  splitting of the first map.
+The flat connection one-form on $\Fr_X$ is the pull-back of the Grothendieck connection $\sigma^*
+\omega^{coor}$. This Grothendieck connection is uniquely determined by the transitive
+action of $\Vect$ on $X^{coor}$. 
+Now we examine how this process would apply to~$X^{coor}_\alpha$.
+
+While $\Vect$ does not act transitively on $X^{coor}_\alpha$, 
+the extension $\Vect \ltimes \hOmega^1_{n,cl}$ does act. 
+Indeed, we have a pull-back diagram of Lie algebras
+\ben
+\xymatrix{
+\Vect \ltimes \hOmega^1_{n,cl} \ar[d] \ar[r]^-{\theta^{coor}_{\alpha}} & \cX(X^{coor}_\alpha) \ar[d] \\
+\Vect \ar[r]^-{\theta^{coor}} & \cX(X^{coor}) .
+}
+\een
+The map $\theta^{coor}$ induces an isomorphism on tangent spaces
+$\theta^{coor} : \Vect \xto{\cong} T_{\varphi} X^{coor}$ and hence so
+does $\theta^{coor}_{\alpha}$. 
+The map $(\theta_\alpha^{coor})^{-1}$ is represented by an element
+\ben
+\omega^{coor}_\alpha \in \Omega^1(X^{coor} , \Vect \ltimes \hOmega^1_{n,cl})
+\een
+satisfying the Maurer-Cartan equation. 
+
+Conversely, if we are given a $(\Vect \ltimes \hOmega^1_{n,cl})$-structure $(\Fr_X, \omega)$, 
+we can consider the characteristic map 
+\ben
+\ch : \clie^*(\Vect \ltimes \hOmega^1_{n,cl} , \GL_n ;
+\hOmega^1_{n,cl}) \to \bdesc((\Fr_X, \omega), \hOmega^1_{n,cl}) .
+\een 
+For any tensor bundle $\cV$, we have a quasi-isomorphism 
+\ben
+\bdesc((\Fr_X, \omega^\sigma), \cV) \simeq \check{\rm C}^*(X ;
+\sdesc((\Fr_X, \omega^\sigma), \cV),
+\een
+since $\bdesc((\Fr_X, \omega^\sigma), \cV)$ is an acyclic resolution
+for $\sdesc((\Fr_X, \omega^\sigma), \cV)$. Thus, we have 
+\ben
+\bdesc((\Fr_X, \omega), \hOmega^1_{n,cl}) \simeq \check{\rm C}^*(X ;
+\sdesc((\Fr_X, \omega), \hOmega^1_{n,cl})) = \check{\rm C}^*(X ;
+\Omega^1_{X, cl}) .
+\een 
+
+\owen{What does the check mean? Do we mean \v{C}ech cohomology? We should figure out what notation we want to use. I thought here we would probably just mean levelwise global sections, since we're talking about a truncated de Rham complex.}
+
+Consider the cocycle $\id_{\Omega^1_{n,cl}} \in \clie^1(\Vect \ltimes
+\hOmega^1_{n,cl} ; \hOmega^1_{n,cl})$. In cohomology, the image of
+this element under the characteristic map is an element
+\ben
+\ch([\id_{\Omega^1_{n,cl}}]) \in {\rm H}^1(X ; \Omega^1_{X, cl}) .
+\een 
+These two constructions are inverse to each other, as can be shown by direct computation. 
+\end{proof}
+
+\subsubsection{Extended Harish-Chandra modules}
+
+In this section we define the analog of the category of modules $\VB_{(\Vect,
+  \GL_n)}$ for the pair $(\Vect \rtimes \hOmega^1_{n,cl}, \GL_n)$. 
+
+First, consider the category of {\it all} Harish-Chandra modules for the pair $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$. 
+There is a subcategory of this consisting of those modules that are filtered with
+respect to the obvious two-step filtration on $\Vect \ltimes
+\hOmega^{1}_{n,cl}$ given by
+\ben
+F^1 = \Vect \ltimes \hOmega^1_{n,cl} \supset F^0 = \hOmega^1_{n,cl} .
+\een
+\owen{This isn't a subcategory as a filtration is data.}
+Let $M$ be such a module. Taking the associated graded with respect to
+this filtration we obtain a graded module ${\rm gr} \; M$ for the pair
+$(\Vect, \GL_n)$. 
+
+\begin{ex}
+We have the formal Atiyah sequence
+\be\label{broidses}
+0 \to \hO_n \to \Tilde{\cT}_n \to \hT_n \to 0,
+\ee
+where $\Tilde{\cT}_n$ is...\ryan{Finish...this sequence is corresponds to $\id_{\Omega^1_{n}} \in C^1_{Lie} (\Vect \rtimes \hOmega^1_{n,cl} , \hOmega^1_{n,cl})$}. Note that by construction this can be considered as a sequence of $(\Vect
+\ltimes \hOmega^1_{n,cl} , \GL_n)$-modules.
+\end{ex}
+
+\begin{ex}
+The formal Weyl algebra $\hA_n$ can be equipped with the structure of $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$-module. \ryan{Make explicit...}
+\end{ex}
+
+
+\subsection{TDO's from descent}\label{sect:TDODesc} 
+
+\subsubsection{Classical theory of TDO's}
+
+We briefly recall a construction of locally trivial TDO's. A standard reference is \cite{Ginzburg} particularly section 2.2 or appendix A of \cite{Kazhdan}.
+
+
+For any $\alpha \in H^1 (X, \Omega^1_{cl})$ we have an associated Atiyah algebra
+\ben
+0 \to \cO_X \to \cT_X^\alpha \to \cT_X \to 0 .
+\een
+Up to isomorphism, this association is a bijection, i.e., Atiyah algebras are classified by $H^1 (X, \Omega^1_{cl})$.
+
+\begin{dfn} 
+The {\em twisted differential operators} $\TDO^\alpha_X$ corresponding to an element $\alpha \in {\rm H}^1(X ; \Omega^1_{cl})$ is the sheaf of algebras~$\cU_{\cO_X} (\cT^\alpha_X)$.
+\end{dfn}
+
+\subsubsection{}
+
+Recall the formal Atiyah sequence
+\be\label{broidses}
+0 \to \hO_n \to \Tilde{\cT}_n \to \hT_n \to 0.
+\ee
+
+
+
+\begin{prop} Fix a GK-structure $\sigma$ on $X$. There is an isomorphism of Lie algebroids on $X$
+\ben
+\sdesc(\sigma, \alpha, \Tilde{\cT}_n) \cong \cT^\alpha_X .
+\een 
+\end{prop}
+\begin{proof} 
+Consider the short exact sequence (\ref{broidses}) of $(\Vect
+\ltimes \hOmega^1_{n,cl} , \GL_n)$ modules. It is determined by the
+cocycle $\id_{\Omega^1_{n}}$ which maps under the characteristic map
+  to $(\Fr_X, \omega^\sigma_\alpha)$
+  to the element $\alpha \in {\rm H}^1(X ; \Omega^1_{X,cl})$. Thus we
+  see that when we apply descent to the short exact sequence of
+  $(\Vect \ltimes \hOmega, \GL_n)$-modules we get a short exact
+  sequence of $\cO_X$-modules 
+\ben
+0 \to \cO_X \to \sdesc(\sigma, \alpha, \Tilde{\cT}_n) \to \cT_X \to 0,
+\een
+which is the Atiyah algebra classified by $\alpha$. We conclude that as $\cO_X$-modules
+$\sdesc(\sigma, \alpha, \Tilde{\cT}_n) \cong \cT_X^\alpha$. Moreover, by the classification of Atiyah algebras, it is an equivalence as Lie algebroids.
+\end{proof}
+
+
+It then follows from Proposition \ref{prop:enveloping} that we obtain twisted differential operators via descent of the formal Weyl algebra.
+
+\begin{cor}\label{cor:descTDO}
+Fix a GK-structure $\sigma$ and let $\alpha \in {\rm H}^1(X, \Omega^1_{cl,X})$. 
+Then 
+\[
+\sdesc(\sigma, \alpha, \hA_n) \cong \TDO^\alpha_{X}.
+\]
+That is, the Gelfand-Kazhdan descent of the completed Weyl algebra $\hA_n$ 
+along the flat $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$-bundle $(\Fr_X, \omega_\alpha^\sigma)$ 
+recovers the sheaf of TDO's on $X$ twisted by~$\alpha$.
+\end{cor}
+
+
+
+\section{One-Dimensional Chern-Simons Theory}
+
+\owen{Again, object to the name.}
+
+\owen{This section should also have an introduction that indicates how it is parallel to the purely algebraic construction just described.}
+
+We construct one-dimensional Chern-Simons \owen{theory} with target the formal
+disk. We will use this theory to study how diffeomorphisms on the target act
+on the theory, which will be encoded by the structure of
+$\Vect$-equivariance. 
+\owen{This second sentence is befuddling.}
+
+We have already seen \owen{?} that the formal disk is encoded by the dg Lie
+algebra $\fg_n = \CC^n[-1]$. Consider the dg Lie algebra 
+\ben
+\fg_n^\RR := \Omega^*(\RR ; \fg_n) .
+\een  
+This dg Lie algebra is abelian and the differential is the de Rham
+differential $\d_{dR}$. This dg Lie algebra encodes deformations of the
+constant map to 0 to nearby smooth functions. 
+
+The dg Lie algebra that encodes one-dimensional Chern-Simons with
+target $\hD^n$ is defined to be the ``double''
+\ben
+\DD \fg_n^\RR = \Omega^*(\RR ; \fg_n \oplus \fg_n^\vee[-2]) .
+\een 
+The Lie bracket is still trivial, and the differential is
+$\d_{dR}$. This dg Lie algebra encodes the cotangent
+theory \owen{? that's not widespread terminology and hence should be explained} to the elliptic moduli problem \owen{also not widespread} described by $\fg_n^\RR$. The
+pairing is ``wedge and integrate''. Explicitly, for $\phi,\phi' \in
+\Omega^*_c(\RR ; \fg_n)$ and $\psi, \psi' \in \Omega^*_c(\RR ;
+\fg_n^\vee[-2])$ we have 
+\ben
+\<\phi + \psi, \phi' + \psi'\> = \int_\RR \ev_{\fg_n}(\phi \wedge
+\psi') + \ev_{\fg_n^\vee} (\psi \wedge \phi') .
+\een
+This pairing has cohomological degree $-3$ and hence determines a
+classical BV theory \owen{no hyphen! BV theory} that we call {\em one-dimensional Chern-Simons
+  with target $\hD^n$}. 
+
+\subsection{The $\Vect$ action}
+
+\subsubsection{}
+
+We have just introduced the dg Lie algebra $\fg_n$.
+\owen{I find this a weird way to start the subsection. Need to restructure a bit.}
+
+Let us denote the generators of $\fg_n$ by $\{\xi_1,\ldots,\xi_n\}$
+and the dual generators by $\{t_1,\ldots,t_n\}$. Thus
+\ben
+\clie^*(\fg_n) = \hsym(\fg^\vee_n[-1]) = \CC \ll  t_1,\ldots, t_n \rr .
+\een 
+There is hence a natural isomorphism
+\ben
+\rho^{\rm W} : \Vect \to \Der(\clie^*(\fg_n))
+\een
+sending $f(t_i) \partial_j$ to $f(t_i) \xi_j$. 
+\owen{Might help to identify the derivations with something explicit so that these notations make sense.}
+
+We can interpret $\rho^{\rm W}$ as expressing an $\L8$ action of $\Vect$ on $\fg_n$, where
+\ben
+\ell^W_m : \Vect \otimes \fgn^{\otimes m} \to \fgn
+\een
+has cohomological degree $1-m$ and $m$ ranges over all non-negative integers.
+These maps are simply the ``Taylor components'' of $\rho_W$.
+For instance, the vector field $\fX = t_1^{m_1} \cdots t_n^{m_n} \partial_j \in \Vect$ acts by zero for any $m \neq m_1 + \cdots + m_n$, 
+and for $m = m_1 + \cdots + m_n$, 
+\ben
+\ell^W_m\left(\fX, (\xi_1^{\otimes m_1} \otimes \cdots \otimes \xi_n^{\otimes m_n}) \right) 
+= \ell_m^\bW \left((t_1^{m_1} \cdots t_n^{m_n} \partial_j) \otimes \xi_1^{\otimes m_1}\otimes \cdots \otimes \xi_n^{\otimes m_n} \right) 
+= \xi_j 
+\een 
+and vanishes on any other basis element $\fg_n^{\otimes m}$.
+
+\subsubsection{}
+
+Let $A$ be a commutative dg algebra. 
+We now show how the
+dg Lie algebra $A \otimes \fgn$ inherits a natural $\L8$ action of $\Vect$.
+Here the sequence of maps is
+\ben
+\ell^{W,A}_m : \Vect \otimes (A \otimes \fgn)^{\otimes m} \to A \otimes \fgn
+\een
+with
+\[
+\ell^{W,A}_m(\fX, (a_1 \otimes x_1)\otimes \cdots \otimes (a_m \otimes x_m)) = \pm (a_1\cdots a_m) \otimes \ell^W_m(\fX,x_1 \otimes \cdots \otimes x_m),
+\]
+where the sign is determined by Koszul's rule.
+Equivalently, we can encode the $\L8$ action in a Lie algebra map
+\[
+\rho_{W,A}: \Vect \to \clies(A \otimes \fgn, A \otimes \fgn[-1]),
+\]
+which assembles the $\ell^A_m$ maps into a ``Taylor series.''
+If we set $A$ to be $\Omega^{*}(\RR)$, then we obtain an $\L8$ action of $\Vect$ on $\fg_n^\RR$.
+A lift of this action to an $\L8$ action of $\Vect$ on $\DD\fg_n^\RR$
+is uniquely determined by the requirement that the action preserve the
+pairing of degree $-3$. 
+
+\owen{Might be nice to make a small comment about why this construction is relevant (encodes action on a mapping space!}
+
+\subsection{The deformation complex}
+
+\owen{Add a little motivation ...}
+
+\begin{prop}\label{propdef} 
+There is a quasi-isomorphism of $\Vect$-modules
+\ben
+J : \Omega^1_{n,cl}[1] \xto{\simeq} \left(\Def_n\right)^{\RR^\times \times \Aff(\RR)}.
+\een
+\owen{Is it a map of Lie algebras?}
+Thus, taking the invariant part of the $\Vect$-equivariant deformation complex, 
+we have a quasi-isomorphism
+\ben
+J : \clie^*(\Vect ; \hOmega^1_{n,cl}[1]) \xto{\simeq}\left(\Def_n^{\rm W}\right)^{\RR^\times \times \Aff(\RR)}
+.
+\een 
+\end{prop}
+
+\subsubsection{One-forms as local functionals}
+
+We explicitly define the quasi-isomorphism 
+\ben
+J : \hOmega^1_{n,cl}[1] \to \Def_n
+\een
+as follows. First, we note that this quasi-isomorphism will land completely in the
+$\RR^\times$-invariant piece of the deformation complex 
+\ben
+\cloc^*(\fg_n^\RR) \subset \Def_n .
+\een 
+Given $\theta \in \hOmega^1_n= \clie^*(\fg_n ;
+  \fg_n^\vee[-1])$ we define
+\ben
+J_\theta(\gamma) = \sum_k \int_{\RR} \<\theta_k(\gamma^{\tensor k}),
+\gamma\>_{\fg}
+\een
+where $\theta_k$ is the $k$th homogenous component of $\theta$, that
+is $\theta_k \in \Sym^k(\fg_n^\vee[-1]) \tensor \fg_n^\vee[-1]$.  
+
+\owen{I think we provided a nicer geometric motivation for this construction in the latest version of the CDO paper.}
+
+\begin{prop} The map $J$ has the following properties: 
+\begin{itemize}
+\item[(1)] For each $\theta$, $J_\theta$ is a local functional and is invariant with respect
+  to the action of $\Aff(\RR)$.
+\item[(2)] The assignment $\theta \mapsto J_\theta$ is
+  $\Vect$-equivariant. 
+\item[(3)] If $\theta$ is closed then $\d_{dR} J_\theta = 0$. 
+\end{itemize}
+\end{prop} 
+
+This proposition implies that we have a $\Vect$-equivariant cochain map 
+\ben
+J : \hOmega^1_{n,cl} [1] \to \cloc^*(\fg_n^\RR)^{\Aff(\RR)} =
+\left(\Def_n\right)^{\RR^\times \times \Aff(\RR)} .
+\een
+Note the shift on the left side is due to the fact that $J_\theta$ is
+a local functional of degree $-1$.
+
+\subsubsection{Proof of Proposition \ref{propdef}}
+
+To complete the proof of the proposition it remains to show that $J$
+is a quasi-isomorphism. This is a cohomological calculation. 
+
+\brian{Insert your guys calculation here, adjusted to the formal disk.}
+
+
+
+\begin{lemma} The first cohomology of $\Vect$ with coefficients in the
+  module $\hOmega^1_{n,cl}$ is one dimensional
+\ben
+{\rm H}^1(\Vect ; \hOmega^1_{n,cl}) \cong \CC
+\een
+spanned by the Gelfand-Fuks chern class $c^{\rm GF}_1(\hT_n)$. 
+\end{lemma}
+
+\subsection{BV quantization}
+
+\brian{We should copy a lot of the analysis from Paper 1 and put in
+  the next 3 sections with modest notational modification.}
+  
+ \ryan{Equivariant quantization}
+
+\subsubsection{Pre-quantization}
+
+\subsubsection{Vanishing of the obstruction}
+
+\subsection{The ``extended'' theory}
+
+\owen{I think it would be good to explain why we want to do this and what it should accomplish, or at least point to some such discussion elsewhere in the paper. Otherwise it's a bit terse.}
+
+We will now extend our $\Vect$-equivariant theory by the module of
+deformations (respecting certain symmetries) that we computed
+above. Thus, we will consider the extension of the Lie algebra $\Vect$
+by the module $\hOmega^1_{n,cl}$ given by $\Vect \ltimes
+\hOmega^1_{n,cl}$. Just as above, we show that there is a quantization
+of this classical equivariant theory. This theory will admit a useful and
+interesting class of deformations when we descend
+over arbitrary target manifolds. 
+
+The extended classical theory is simple to describe. The
+$\Vect$-equivariant theory above was encoded by a map of Lie
+algebras
+\ben
+I^{\rm W} : \Vect \to \cloc^*(\DD \fg_n^\RR)[-1] .
+\een 
+Our extended classical theory is encoded by the restriction of this
+equivariant theory along the map of Lie algebras $p : \Vect \ltimes
+\hOmega^1_{n,cl} \to \Vect$. It is immediate that this defines a $\Vect
+\ltimes \hOmega^1_{n,cl}$-equivariant classical field theory. 
+
+
+Denote by $\Tilde{\Def}^{\rm W}_n$ the extended equivariant
+deformation complex. We can realize it as the tensor product
+\ben
+\Tilde{\Def}^{\rm W}_n = \clie^*(\Vect \ltimes \hOmega^1_{n,cl} ;
+\Def_n) \cong \clie^*(\Vect \ltimes \hOmega^1_n)
+\tensor_{\clie^*(\Vect)} \Def_n^{\rm W} .
+\een
+Thus, the quasi-isomorphism $J$ extends to a quasi-isomorphism
+\be\label{extdef}
+\Tilde{J} : \clie^*(\Vect \ltimes \hOmega^1_n ; \hOmega^1_n)
+\xto{\simeq} \left(\Tilde{\Def}_n^{\rm W}\right)^{\RR^\times \times
+  \Aff(\RR)} .
+\ee
+Here, $\hOmega^1_{n,cl}$ denotes the restriction of the $\Vect$-module
+along the map $p : \Vect \ltimes \hOmega^1_{n,cl} \to \Vect$. 
+
+There is a natural cocycle in $\clie^1(\Vect \ltimes \hOmega^1_{n,cl} ;
+\hOmega^1_{n,cl})$ given by the identity $\id_{\Omega^1}$ on one-forms. 
+
+\begin{lemma} The space ${\rm H}^1(\Vect \ltimes \hOmega^1_{n,cl} ,
+  \GL_n ; \hOmega^1_{n,cl})$ is two dimensional spanned by $c_1^{\rm
+    GF}(\hT_n)$ and $\id_{\Omega^1}$. 
+\end{lemma}
+
+Thus, the cocycle $\id_{\Omega^1}$ determines an additional cohomologically non-trivial deformation in the extended case. 
+
+\subsubsection{Quantization} 
+
+We obtain a quantization for this classical theory in the same way as
+in the non-extended case. In the $\Vect$-equivariant theory we showed
+that we have a quantization given by the collection of functionals
+$\{I^{\rm W}  [L]\} \subset \clie^\# (\Vect ; \clie^\#(\DD \fg_n^\RR))
+\ll \hbar \rr$. We can restrict these functionals along the morphism
+$p : \Vect \ltimes \hOmega^1_{n,cl}$ to obtain functionals
+\ben
+\Tilde{I}^{\rm W}[L] := p^*(I^{\rm W}[L]) \in \clie^\# (\Vect 
+\ltimes \hOmega^1_{n,cl} ; \clie^\#(\DD \fg_n^\RR) \ll \hbar \rr .
+\een 
+The same argument as above shows that this pre-quantization is
+actually a quantization; that is, there is no obstruction. 
+
+\begin{prop} The functionals $\{\Tilde{I}^{\rm W}[L]\}$ define a
+  quantization for the $\Vect \ltimes \hOmega^1_{n,cl}$-equivariant
+  theory.
+\end{prop}
+
+\subsubsection{A deformation}
+
+We are interested in a deformation of this theory given by the
+additional cocycle present in the extended case. The map $J :
+\hOmega^1_{n,cl} \to \Def_n$ from \owen{add cross ref} extends to a map
+\ben
+J : \Vect \ltimes \hOmega^1_{n,cl} \to \Def_n
+\een
+that sends $(X,\theta) \mapsto J_\theta$. Hence we can realize $J$
+as a cocycle in $\Def_n^{\rm W}$. Tautologically, this cocycle corresponds to
+the identity cocycle $\id_{\Omega^1} \in \clie^*(\Vect \ltimes
+\hOmega^1_{n,cl} ; \hOmega^1_{n,cl})$ under the quasi-isomorphism~(\ref{extdef}). 
+
+We then obtain a deformation of the quantum theory as follows. For $L > 0$
+define the functional 
+\ben
+J[L] := \lim_{\epsilon \to 0} \sum_{\substack{\Gamma \in
+    \text{\rm Trees}\\ v \in V(\Gamma)}} W_{\Gamma, v}(P_{\epsilon <
+  L}, I, J)
+\een
+where the sum is over graphs and distinguished vertices. The notation $W_{\Gamma, v}(P_{\epsilon <
+  L}, I^{\rm W}, J)$ means that we compute the weight of the graph $\Gamma$
+with $J$ placed at the vertex $v$ and $I^{\rm W}$ placed at all other
+vertices. \owen{Add picture!}
+
+\begin{prop} \brian{ref any of Si's papers here, he always proves this
+    fact}For each $L > 0$ the functional $I^{\rm W}[L] + \hbar J[L]$
+  satisfies the scale $L$ quantum master equation
+\ben
+(\d_{dR} + \d_{\Vect \ltimes \hOmega^1_{n,cl}}) (I^{\rm W}[L] + \hbar
+J[L]) + \frac{1}{2} \{I^{\rm W}[L] + \hbar J[L], I^{\rm W}[L] + \hbar
+J[L]\}_L + \hbar \Delta_L (I^{\rm W}[L] + \hbar J[L]) = 0 .
+\een
+Thus, the family of functionals $\{\Tilde{I}^{\rm W}[L] + \hbar
+  J[L]\}_{L > 0}$ defines a quantization of the $\Vect \ltimes
+  \hOmega^1_{n,cl}$-equivariant theory. 
+\end{prop}
+
+
+\subsection{Descending to the Global (Quantum) Theory}
+
+\ryan{Comparison Theorem to GG theory}
+
+
+\begin{prop} 
+For any choice of Gelfand-Kazhdan structure $\sigma$ on a smooth manifold $X$,
+there is an isomorphism 
+\ben
+\bdesc(\sigma, \fg_n) \cong \fg_X 
+\een 
+of sheaves on $X$ of curved $\L8$ algebras.
+\end{prop}
+
+We have already seen how the action of $\Vect$ on $\fg_X$ extends to
+an action of $\Vect$ on the dg Lie algebra $\DD \fg_n^\RR$ defining
+the classical field theory. As a corollary of the above we obtain. 
+
+\begin{cor} Let $\DD \fg_X^\RR$ be the curved $\L8$ algebra defining
+  one-dimensional Chern-Simons with target $X$. Then
+$\desc(\sigma, \DD \fg_n^\RR) \cong \DD \fg_X^\RR$.
+\end{cor}
+
+Thus, one-dimensional Chern-Simons \owen{theory!} with target the formal $n$-disk
+descends to one-dimensional Chern-Simons with target any smooth
+manifold. 
+
+\owen{We should give precise citations to GG!}
+
+Results from \brian{ref GG} imply that the translation invariant obstruction deformation \owen{now the hyphens are missing!}
+complex for one-dimensional Chern-Simons with target $B \fg$ is
+quasi-isomorphic to
+\ben
+\Omega^1_{cl}(B \fg)[1] \oplus \Omega^1_{cl} (B \fg)  .
+\een
+Moreover, only the first term gives deformations that are also scale
+invariant \owen{scaling what?}. This implies that, up to homotopy \owen{I don't like this phrase since it's too easy to misinterpret. Someone might say "homotopy of what? X?''}, the space of
+deformations for one-dimensional Chern-Simons with target $X$ that are
+both translation and scale invariant is 
+\ben
+{\rm H}^1(X, \Omega^1_{cl,X}) 
+\een
+Since there is no obstruction to quantization, given any $\alpha \in
+{\rm H}^1(X, \Omega^1_{cl,X})$ there is a quantization
+\ben
+\{S_\alpha^X [\Phi]\} \subset \clie^*(\DD \fg_X^S) \ll \hbar \rr 
+\een 
+and vice versa. 
+
+\subsubsection{Explicit description}
+\brian{define $S_\alpha^X [\Phi]$.}
+
+\subsubsection{}
+
+\ryan{some redundancy in exposition here...}
+
+The cotangent translation invariant plus scale invariant deformation complex for
+one-dimensional Chern-Simons with target the {\em formal disk} was
+identified with 
+\ben
+\left(\Def_n\right)^{\RR^\times \times \Aff(\RR)} \simeq \hOmega^1_{n,cl} .
+\een 
+Moreover, this quasi-isomorphism is $\Vect$-equivariant. Thus, the
+descent of this deformation complex along any manifold recovers the
+sheaf $\Omega^1_{cl,X}$. 
+
+We have constructed a $\Vect \ltimes \hOmega^1_{n,cl}$-equivariant quantization
+\ben
+\{\Tilde{I}^{\rm W}  [\Phi] + \hbar J[\Phi]\} \subset \clie^\#(\Vect \ltimes
+\hOmega^1_{n,cl}) \tensor \clie^\#(\DD \fg_n^\RR) \ll \hbar \rr
+\een
+Moreover, for each $\Phi$,
+$\Tilde{S}^{\rm W}  [\Phi]$ is $\GL_n$-invariant. Thus, it determines
+an element
+\ben
+\Tilde{S}^{\rm W} [\Phi] \in \clie^*\left(\Vect, \GL_n ; \clie^*(\DD
+\fg_n^\RR) \ll \hbar \rr \right) .
+\een
+
+We have already seen that there is a bijection between the space ${\rm
+  H}^1(X, \Omega^1_{X,cl})$ and lifts of the coordinate bundle
+$X^{coor} \to X$, which is a torsor for $\Vect$, to an extended coordinate bundle $X^{coor}_\alpha \to
+X$. This extended bundle is a torsor for the trivially extended Lie
+algebra $\Vect \ltimes \hOmega^1_{n,cl}$, and the lift is with respect
+to the homomorphism $\Vect \ltimes \hOmega^1_{n,cl} \to \Vect$. A
+Gelfand-Kazhdan structure induces the structure of a $(\Vect \ltimes
+\hOmega^1_{n,cl}, \GL_n)$ on the pair 
+\ben
+(\Fr_X, \omega_\alpha^\sigma) .
+\een
+Here $\omega_\alpha^\sigma \in \Omega^1(\Fr_X ; \Vect \ltimes
+\hOmega^1_{n,cl})$ is the connection one-form constructed in
+\brian{ref}. 
+
+\begin{prop} 
+Consider the characteristic map for the flat $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$-bundle $(\Fr_X, \omega^\sigma_\alpha)$ and the module $\clie^*(\DD \fg_n^\RR) \ll \hbar \rr$:
+\ben
+\ch : \clie^*\left(\Vect, \GL_n ; \clie^*(\DD
+\fg_n^\RR) \ll \hbar \rr \right) \to \clie^*(\DD\fg_X^\RR) \ll \hbar
+\rr.
+\een
+the functional $\Tilde{S}^{\rm W}[\Phi]$ maps to $S_\alpha^X[\Phi]$. 
+\end{prop}
+
+This says that Gelfand-Kazhdan descent for the extended
+coordinate bundle determined by $\alpha$ maps the quantization of {\em
+  formal one-dimensional Chern-Simons} to the quantization of
+one-dimensional Chern-Simons with target $X$ corresponding to the
+deformation $\alpha$. 
+
+
+
+\section{Observable Theory}
+
+
+\subsection{Observables in the Formal Theory}
+
+\ryan{Classical/quantum, equivariant (depends on fixed eq quant), extended}
+
+
+We first must identify the factorization algebra of one-dimensional
+Chern-Simons theory with target $\hD^n$. This factorization algebra is
+locally constant and a short calculation shows that its cohomology
+agrees with the associative algebra $\hA_n$.
+\owen{This paragraph should be extended.}
+
+Let's start with the classical factorization algebra which assigns to
+an interval $I \subset \RR$ the cochains on the dg Lie algebra $\DD
+\fg_n^I$. If $I \subset J$ is an embedding of open intervals then it
+follows from the Poincar\'{e} Lemma for differential forms on $\RR^n$
+that the induced map
+\ben
+\fg_n^J \xto{\simeq} \fg_n^I
+\een
+is a homotopy equivalence. It follows that $\Obs^{cl}_n$ is a locally
+constant factorization algebra. 
+
+
+
+
+\begin{prop} The associative algebra $\cA_n$ corresponding to the
+  cohomology factorization algebra ${\rm H}^*(\Obs^q_n)$ is isomorphic
+  to the completed Weyl algebra $\hA_n$. 
+\end{prop}
+
+
+
+\subsubsection{Equivariant}
+
+We have just seen that the cohomology factorization algebra of
+observables of the
+theory is isomorphic to the completed Weyl algebra $\hA_n$. In Section
+\brian{ref} we showed that the equivariant quantization of
+one-dimensional Chern-Simons endowed the factorization algebra of
+observables with the structure of a semi-strict module for the pair
+$(\Vect, \GL_n)$. In this section we show that the induced action of
+the pair is the correct one, where $\Vect$ and $\GL_n$ act on the Weyl
+algebra in the natural way as defined in Section \brian{ref}. 
+
+\begin{thm} The associative algebra $\cA_n$ corresponding to the
+  cohomology factorization algebra ${\rm H}^*(\Obs^q_n)$ is isomorphic
+  as $(\Vect, \GL_n)$-modules to the Weyl algebra $\hA_n$. 
+\end{thm}
+
+The data of the $\L8$ module structure for $\Obs^q_n$ over $\Vect$ was
+encoded by the functionals 
+\ben
+\{I^{\rm W}[L] \} \subset \clie^\#(\Vect) \tensor \clie(\DD \fg_n^\RR) \ll
+\hbar \rr .
+\een 
+At the level of cohomlogy the action of $\Vect$ is strict, so only
+tree level interactions will contribute. We
+see the the action of $\fX \in \Vect$ on $\Obs^q_n$ is via the BV bracket
+with the functional $I^{\rm W}_\fX$. That is, if $\{O[L]\}$ denotes an
+observable then a formal vector field $X$ acts on the observable by
+the formula
+\ben
+\{I_\fX^{\rm W}, O[L]\}_L .
+\een 
+
+Given a smeared observable $O \in \bObs^q_n$ we can run tree level
+RG-flow to obtain an observable $W_0(O) = \{O[L]\}$ where
+\ben
+O[L] = W(P_0^L, O) .
+\een
+We have already seen that tree level RG-flow determines a
+quasi-isomorphism of factorization algebras $\bObs^q_n \cong
+\Obs^q_n$. From \brian{ref} in the appendix we see that the BV bracket with a
+local functional is
+compatible with tree level RG-flow in the sense that 
+\ben
+\{I, O[L]\}_L = \{I,O\}[L]
+\een
+where $\{I,O\} [L] = W(P_0^L, \{I,O\})$.
+
+\subsubsection{}
+
+To show that the identification of $\cA_n$ with $\hA_n$ is
+$\Vect$-equivariant we must show that the BV bracket with t. Let $a \in \cA_n$ and pick
+a lift 
+\ben
+\Tilde{a} \in \bObs^q(I) .
+\een 
+Running tree level RG-flow we obtain a (non-smeared) observable
+$\{\Tilde{a}[L]\}$. Since the action of a formal vector field $\fX$ on
+$\Tilde{a}[L]$ is through the BV bracket it suffices to compute
+$\{I^{\rm W}_\fX [L] , \Tilde{a}[L]\}_L$. Likewise, the action of an element
+$\theta \in \hOmega^1_{n,cl}$ is the BV bracket with $J_\theta$.
+
+Since $I_\fX^{\rm W}$ is a local functional we see that the scale $L$
+bracket is equal
+to $\{I_\fX^{\rm W}, \Tilde{a}\}[L] = W(P_0^L, \{I_\fX^{\rm W},
+\Tilde{a}\})$. Likewise for the local functional $J$ and closed
+one-forms. So, to compute the action of $\Vect \ltimes \hOmega^1_{n,cl}$ on the
+quantum observables it suffices to compute $\{I_\fX^{\rm W} + \hbar
+J_\theta , -\}$ acting on observables.
+
+\begin{prop} Let $\fX \in \Vect$ and $\theta \in \hOmega^1_{n,cl}$. At the level of cohomology in $\Obs^q_n(I)$ we have
+\ben
+\left[ \{I_\fX^{\rm W}, a\} \right] = \fX \cdot [a]
+\een
+and 
+\ben
+\left[ \{J_\theta, a\} \right] = \theta \cdot [a]
+\een
+where on the right hand side we mean the natural action of formal
+vector fields and closed one-forms on the Weyl algebra $\hA_n$ by derivations. 
+\end{prop}
+\begin{proof}
+
+Let us first consider the local functional $I^{\rm W}_\fX \in \cloc^*(\DD
+\fg_n^\RR)$ associated to a fixed formal vector field $\fX \in \Vect$. It is
+of the form $I^{\rm W}_\fX = \int \cL_\fX \d x$ where $\cL_\fX : \DD \fg_n \to
+C^\infty(\RR)$ is the Lagrangian density. 
+
+Given any element $\omega \in \Omega^*_c(U)$ supported on an interval
+$U$ we obtain an observable in $\Obs^{cl}(U)$ by wedging and
+integrating 
+\ben
+\int \omega \wedge \cL_\fX \in \Obs^{cl}_n (U) . 
+\een 
+In particular, suppose $f$ is a bump function for the interval
+$U$. That is, $\int_U f \d x = 1$. Then, we can consider the
+observable 
+\ben
+\int f \d x \wedge \cL_\fX \in \Obs^{cl}_n(U) .
+\een
+It is easy to see that the cohomology class of this observable
+coincides with the element $\fX \in \cA_n$. \brian{should we write down
+  the formulas?}
+
+If we view $\fX$ as an element of the formal Weyl algebra then the
+action $\fX \cdot a$ is equal to the commutator $\frac{1}{\hbar} [\fX,
+a]$. We wish to show that the image of $\{I_\fX^{\rm W}, \tilde{a}\}$ in
+cohomology is equal to this commutator, which we proceed to compute.
+
+Suppose $U_{-1}$, $U_0$, $U_1$ are the intervals of length $1/2$
+centered at $-1$, $0$, and $1$ respectively. Fix a bump function $f$
+for the interval $U_0$ and let
+\ben
+(\tau_{-1} f)(x) = f(x+1) \;\; , \;\; (\tau_1 f)(x) = f(x-1) .
+\een 
+Define the function 
+\ben
+h (x) = \int_{s = 0}^{s = x} \left((\tau_{1} f) - (\tau_{-1} f) \right) \d
+s .
+\een
+
+Fix a closed element $a \in \Obs_n^q(U_0)$ and consider the observable
+$\int h \wedge \cL_\fX \in \Obs^q_n(\RR)$. The following is a direct calculation 
+\bestar
+(\d_{dR} + \hbar \Delta) \left( \left(\int h \wedge \cL_\fX\right) \cdot
+  a \right) & = & 
+\left(\int (\d_{dR} h) \wedge \cL_\fX \right) \cdot a 
++ \hbar \Delta \left( \left(\int h \wedge \cL_\fX\right) \cdot a \right) \\ & = & \left(\int (f_{1} \d x) \wedge \cL_\fX - \int (f_{-1} \d x)\wedge
+    \cL_\fX \right) \cdot a - \{I_\fX, a\} .
+\eestar 
+We have used the fact that $a$
+is a closed quantum observable by assumption so $(\d_{dR} + \hbar
+\Delta) a = 0$. We have also used the fact that $h$ is identically
+$-1$ on the interval $U_0$ so that $\int h \cL_\fX = I_\fX$ on $U_0$. 
+
+We conclude that in the complex $\Obs^q_n(\RR)$ the following relation holds
+\ben
+\hbar \{I^{\rm W}_\fX , a\} = I_\fX^{\rm W} ((\tau_{1} f) \d t - (\tau_{-1} f) \d t) \cdot
+a + \{{\rm exact\;terms}\} .
+\een
+In cohomology, the right hand side becomes $[\fX, [a] ]$ as desired,
+where $[a]$ is the cohomology class of $a$. 
+\end{proof}
+
+
+\subsection{Upon Descent: The Factorization Algebra of Observables}
+
+
+\subsubsection{Descent of Observables}
+
+\owen{I don't like this first paragraph. It sounds more like something we'd say in conversation to each other.}
+
+There is hardly a problem descending the factorization algebras of classical/quantum observables. Morally, we can descend observables since the factorization algebra structure is determined by the topology of the source manifold (in this case $\RR$), while Gelfand-Kazhdan descent happens on the target manifold.  We now describe the requisite details.
+
+\begin{prop} 
+For each $U \subset \RR$ open, the classical observables $\Obs^{cl}_n (U)$ form a strict module over $(\Vect , \GL_n)$. Moreover, the structure maps of the factorization algebra $\Obs^{cl}_n$ are maps of (strict) $(\Vect, \GL_n)$-modules.
+\end{prop}
+
+The preceding proposition immediately implies that the pre-factorization algebra on classical observables descends. However, Lemma \ref{lem:descexact} implies that $\sdesc$ preserves limits, so we obtain the following.
+
+\begin{cor}
+Let $X$ be a smooth $n$-manifold and $(\Fr_X , \sigma)$ a Gelfand-Kazhdan structure.  Then $\sdesc(\Obs^{cl}_n)$ is a commutative factorization algebra on $\RR$ valued in $\Omega^\ast (X)$-modules.  Moreover, up to natural isomorphism, this factorization algebra does not depend on the choice of the Gelfand-Kazhdan structure.
+\end{cor}
+
+In the quantum case we do not have a strict action of the pair
+$(\Vect, \GL_n)$. 
+
+\begin{prop} The quantum observables $\Obs^{q}_n$ form a semi-strict
+  representation of the Harish-Chandra pair $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$. In
+  particular, $\GL_n$ acts by (strict) automorphisms of the
+  factorization algebra, and $\Vect \ltimes \hOmega^1_{n,cl}$ acts by
+  $L_\infty$-derivations of the factorization algebra. 
+\end{prop}
+
+\begin{cor}
+Let $X$ be a smooth $n$-manifold, $\alpha \in {\rm
+    H}^2(X)$, and $(\Fr_X , \sigma, \alpha)$ an extended Gelfand-Kazhdan structure. Then semi-strict Gelfand-Kazhdan descent along $(\Fr_X, \sigma, \alpha)$ of $\Obs^q_n$ produces a factorization algebra (on $\RR$) valued in modules over $\Omega^\ast (X)$.  
+\end{cor}
+
+\ryan{Dependence on $(\Fr_X, \sigma, \alpha)$?}
+
+\owen{Same situation. Probably important to state what happens at the level of the cohomology factorization algebra.}
+
+\subsubsection{Descent and $\Obs$ commute}
+
+\ryan{Does this follow for some formal reasons?}
+
+
+\subsection{The main Theorem: Identifying $\Obs^q_n$}
+
+\ryan{Use results of Section \ref{sect:TDODesc} to identify the factorization algebra.}
+
+\appendix
+
+\owen{I do't think we need any of these appendices. Just point to the papers and books.}
+
+\section{BV Theories}
+
+\ryan{Is it possible to give quick overview of definitions of quantization and equivariant quantization? Recall the necessary deformation-obstruction stuff.}
+
+\section{Factorization Algebras}
+
+\subsection{Basic Constructions}
+
+\ryan{Include definition of equivariant fact alg}
+
+\subsection{Observables: From QFT to Factorization Algebras}
+
+\ryan{Include any comments about functional analysis.}
+
+\begin{lemma} Tree level RG-flow determines a quasi-isomoprhism of
+  factorization algebras
+\ben
+W_0 : \bObs^q_n \xto{\simeq} \Obs^q_n .
+\een 
+\end{lemma}
+
+\ryan{Want all the structural results for $\Obs$...}
+
+
+Let $\{I^\fh[L]\}$ be an $\fh$-equivariant BV quantization. Then $\Obs^q$ has an $L_\infty$-action of $\fh$. \ryan{This follows from definitions, no?}
+
+Let $(\fh, K)$ be a HC-module and act on the BV theory.
+
+\begin{prop}
+If further \ryan{blah}, then the $(\fh, K)$-action on $\Obs^q$ is semi-strict, i.e., the $K$-action can be rectified to a strict action.
+\end{prop}
+
+\ryan{Is there really a further condition or does this follow automatically from the definitions?}
+
+
+
+
+\end{document}
+
