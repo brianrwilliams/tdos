@@ -1,0 +1,292 @@
+\section{The Formal Theory}
+
+
+\owen{This section should also have an introduction that indicates how it is parallel to the purely algebraic construction just described.}
+
+We construct one-dimensional Chern-Simons \owen{theory} with target the formal
+disk. We will use this theory to study how diffeomorphisms on the target act
+on the theory, which will be encoded by the structure of
+$\Vect$-equivariance. 
+\owen{This second sentence is befuddling.}
+
+We have already seen \owen{?} that the formal disk is encoded by the dg Lie
+algebra $\fg_n = \CC^n[-1]$. Consider the dg Lie algebra 
+\ben
+\fg_n^\RR := \Omega^*(\RR ; \fg_n) .
+\een  
+This dg Lie algebra is abelian and the differential is the de Rham
+differential $\d_{dR}$. This dg Lie algebra encodes deformations of the
+constant map to 0 to nearby smooth functions. 
+
+The dg Lie algebra that encodes one-dimensional Chern-Simons with
+target $\hD^n$ is defined to be the ``double''
+\ben
+\DD \fg_n^\RR = \Omega^*(\RR ; \fg_n \oplus \fg_n^\vee[-2]) .
+\een 
+The Lie bracket is still trivial, and the differential is
+$\d_{dR}$. This dg Lie algebra encodes the cotangent
+theory \owen{? that's not widespread terminology and hence should be explained} to the elliptic moduli problem \owen{also not widespread} described by $\fg_n^\RR$. The
+pairing is ``wedge and integrate''. Explicitly, for $\phi,\phi' \in
+\Omega^*_c(\RR ; \fg_n)$ and $\psi, \psi' \in \Omega^*_c(\RR ;
+\fg_n^\vee[-2])$ we have 
+\ben
+\<\phi + \psi, \phi' + \psi'\> = \int_\RR \ev_{\fg_n}(\phi \wedge
+\psi') + \ev_{\fg_n^\vee} (\psi \wedge \phi') .
+\een
+This pairing has cohomological degree $-3$ and hence determines a
+classical BV theory \owen{no hyphen! BV theory} that we call {\em one-dimensional Chern-Simons
+  with target $\hD^n$}. 
+
+\subsection{The $\Vect$ action}
+
+\subsubsection{}
+
+We have just introduced the dg Lie algebra $\fg_n$.
+\owen{I find this a weird way to start the subsection. Need to restructure a bit.}
+
+Let us denote the generators of $\fg_n$ by $\{\xi_1,\ldots,\xi_n\}$
+and the dual generators by $\{t_1,\ldots,t_n\}$. Thus
+\ben
+\clie^*(\fg_n) = \hsym(\fg^\vee_n[-1]) = \CC [[  t_1,\ldots, t_n ]].
+\een 
+There is hence a natural isomorphism
+\ben
+\rho^{\rm W} : \Vect \to \Der(\clie^*(\fg_n))
+\een
+sending $f(t_i) \partial_j$ to $f(t_i) \xi_j$. 
+\owen{Might help to identify the derivations with something explicit so that these notations make sense.}
+
+We can interpret $\rho^{\rm W}$ as expressing an $\L8$ action of $\Vect$ on $\fg_n$, where
+\ben
+\ell^W_m : \Vect \otimes \fgn^{\otimes m} \to \fgn
+\een
+has cohomological degree $1-m$ and $m$ ranges over all non-negative integers.
+These maps are simply the ``Taylor components'' of $\rho_W$.
+For instance, the vector field $\fX = t_1^{m_1} \cdots t_n^{m_n} \partial_j \in \Vect$ acts by zero for any $m \neq m_1 + \cdots + m_n$, 
+and for $m = m_1 + \cdots + m_n$, 
+\ben
+\ell^W_m\left(\fX, (\xi_1^{\otimes m_1} \otimes \cdots \otimes \xi_n^{\otimes m_n}) \right) 
+= \ell_m^\bW \left((t_1^{m_1} \cdots t_n^{m_n} \partial_j) \otimes \xi_1^{\otimes m_1}\otimes \cdots \otimes \xi_n^{\otimes m_n} \right) 
+= \xi_j 
+\een 
+and vanishes on any other basis element $\fg_n^{\otimes m}$.
+
+\subsubsection{}
+
+Let $A$ be a commutative dg algebra. 
+We now show how the
+dg Lie algebra $A \otimes \fgn$ inherits a natural $\L8$ action of $\Vect$.
+Here the sequence of maps is
+\ben
+\ell^{W,A}_m : \Vect \otimes (A \otimes \fgn)^{\otimes m} \to A \otimes \fgn
+\een
+with
+\[
+\ell^{W,A}_m(\fX, (a_1 \otimes x_1)\otimes \cdots \otimes (a_m \otimes x_m)) = \pm (a_1\cdots a_m) \otimes \ell^W_m(\fX,x_1 \otimes \cdots \otimes x_m),
+\]
+where the sign is determined by Koszul's rule.
+Equivalently, we can encode the $\L8$ action in a Lie algebra map
+\[
+\rho_{W,A}: \Vect \to \clies(A \otimes \fgn, A \otimes \fgn[-1]),
+\]
+which assembles the $\ell^A_m$ maps into a ``Taylor series.''
+If we set $A$ to be $\Omega^{*}(\RR)$, then we obtain an $\L8$ action of $\Vect$ on $\fg_n^\RR$.
+A lift of this action to an $\L8$ action of $\Vect$ on $\DD\fg_n^\RR$
+is uniquely determined by the requirement that the action preserve the
+pairing of degree $-3$. 
+
+\owen{Might be nice to make a small comment about why this construction is relevant (encodes action on a mapping space!}
+
+\subsection{The deformation complex}
+
+
+\begin{prop}\label{propdef} 
+There is a quasi-isomorphism of $\Vect$-modules
+\ben
+J : \Omega^1_{n,cl}[1] \xto{\simeq} \left(\Def_n\right)^{\RR^\times \times \Aff(\RR)}.
+\een
+\owen{Is it a map of Lie algebras?}
+Thus, taking the invariant part of the $\Vect$-equivariant deformation complex, 
+we have a quasi-isomorphism
+\ben
+J : \clie^*(\Vect ; \hOmega^1_{n,cl}[1]) \xto{\simeq}\left(\Def_n^{\rm W}\right)^{\RR^\times \times \Aff(\RR)}
+.
+\een 
+\end{prop}
+
+\subsubsection{One-forms as local functionals}
+
+We explicitly define the quasi-isomorphism 
+\ben
+J : \hOmega^1_{n,cl}[1] \to \Def_n
+\een
+as follows. First, we note that this quasi-isomorphism will land completely in the
+$\RR^\times$-invariant piece of the deformation complex 
+\ben
+\cloc^*(\fg_n^\RR) \subset \Def_n .
+\een 
+Given $\theta \in \hOmega^1_n= \clie^*(\fg_n ;
+  \fg_n^\vee[-1])$ we define
+\ben
+J_\theta(\gamma) = \sum_k \int_{\RR} \<\theta_k(\gamma^{\tensor k}),
+\gamma\>_{\fg}
+\een
+where $\theta_k$ is the $k$th homogenous component of $\theta$, that
+is $\theta_k \in \Sym^k(\fg_n^\vee[-1]) \tensor \fg_n^\vee[-1]$.  
+
+\owen{I think we provided a nicer geometric motivation for this construction in the latest version of the CDO paper.}
+
+\begin{prop} The map $J$ has the following properties: 
+\begin{itemize}
+\item[(1)] For each $\theta$, $J_\theta$ is a local functional and is invariant with respect
+  to the action of $\Aff(\RR)$.
+\item[(2)] The assignment $\theta \mapsto J_\theta$ is
+  $\Vect$-equivariant. 
+\item[(3)] If $\theta$ is closed then $\d_{dR} J_\theta = 0$. 
+\end{itemize}
+\end{prop} 
+
+This proposition implies that we have a $\Vect$-equivariant cochain map 
+\ben
+J : \hOmega^1_{n,cl} [1] \to \cloc^*(\fg_n^\RR)^{\Aff(\RR)} =
+\left(\Def_n\right)^{\RR^\times \times \Aff(\RR)} .
+\een
+Note the shift on the left side is due to the fact that $J_\theta$ is
+a local functional of degree $-1$.
+
+\subsubsection{Proof of Proposition \ref{propdef}}
+
+To complete the proof of the proposition it remains to show that $J$
+is a quasi-isomorphism. This is a cohomological calculation. 
+
+\brian{Insert your guys calculation here, adjusted to the formal disk.}
+
+
+
+\begin{lem} The first cohomology of $\Vect$ with coefficients in the
+  module $\hOmega^1_{n,cl}$ is one dimensional
+\ben
+{\rm H}^1(\Vect ; \hOmega^1_{n,cl}) \cong \CC
+\een
+spanned by the Gelfand-Fuks chern class $c^{\rm GF}_1(\hT_n)$. 
+\end{lem}
+
+\subsection{BV quantization}
+
+\brian{We should copy a lot of the analysis from Paper 1 and put in
+  the next 3 sections with modest notational modification.}
+  
+ \ryan{Equivariant quantization}
+
+\subsubsection{Pre-quantization}
+
+\subsubsection{Vanishing of the obstruction}
+
+\subsection{The ``extended'' theory}
+
+\owen{I think it would be good to explain why we want to do this and what it should accomplish, or at least point to some such discussion elsewhere in the paper. Otherwise it's a bit terse.}
+
+We will now extend our $\Vect$-equivariant theory by the module of
+deformations (respecting certain symmetries) that we computed
+above. Thus, we will consider the extension of the Lie algebra $\Vect$
+by the module $\hOmega^1_{n,cl}$ given by $\Vect \ltimes
+\hOmega^1_{n,cl}$. Just as above, we show that there is a quantization
+of this classical equivariant theory. This theory will admit a useful and
+interesting class of deformations when we descend
+over arbitrary target manifolds. 
+
+The extended classical theory is simple to describe. The
+$\Vect$-equivariant theory above was encoded by a map of Lie
+algebras
+\ben
+I^{\rm W} : \Vect \to \cloc^*(\DD \fg_n^\RR)[-1] .
+\een 
+Our extended classical theory is encoded by the restriction of this
+equivariant theory along the map of Lie algebras $p : \Vect \ltimes
+\hOmega^1_{n,cl} \to \Vect$. It is immediate that this defines a $\Vect
+\ltimes \hOmega^1_{n,cl}$-equivariant classical field theory. 
+
+
+Denote by $\Tilde{\Def}^{\rm W}_n$ the extended equivariant
+deformation complex. We can realize it as the tensor product
+\ben
+\Tilde{\Def}^{\rm W}_n = \clie^*(\Vect \ltimes \hOmega^1_{n,cl} ;
+\Def_n) \cong \clie^*(\Vect \ltimes \hOmega^1_n)
+\tensor_{\clie^*(\Vect)} \Def_n^{\rm W} .
+\een
+Thus, the quasi-isomorphism $J$ extends to a quasi-isomorphism
+\be\label{extdef}
+\Tilde{J} : \clie^*(\Vect \ltimes \hOmega^1_n ; \hOmega^1_n)
+\xto{\simeq} \left(\Tilde{\Def}_n^{\rm W}\right)^{\RR^\times \times
+  \Aff(\RR)} .
+\ee
+Here, $\hOmega^1_{n,cl}$ denotes the restriction of the $\Vect$-module
+along the map $p : \Vect \ltimes \hOmega^1_{n,cl} \to \Vect$. 
+
+There is a natural cocycle in $\clie^1(\Vect \ltimes \hOmega^1_{n,cl} ;
+\hOmega^1_{n,cl})$ given by the identity $\id_{\Omega^1}$ on one-forms. 
+
+\begin{lem} The space ${\rm H}^1(\Vect \ltimes \hOmega^1_{n,cl} ,
+  \GL_n ; \hOmega^1_{n,cl})$ is two dimensional spanned by $c_1^{\rm
+    GF}(\hT_n)$ and $\id_{\Omega^1}$. 
+\end{lem}
+
+Thus, the cocycle $\id_{\Omega^1}$ determines an additional cohomologically non-trivial deformation in the extended case. 
+
+\subsubsection{Quantization} 
+
+We obtain a quantization for this classical theory in the same way as
+in the non-extended case. In the $\Vect$-equivariant theory we showed
+that we have a quantization given by the collection of functionals
+$\{I^{\rm W}  [L]\} \subset \clie^\# (\Vect ; \clie^\#(\DD \fg_n^\RR))
+[[ \hbar ]]$. We can restrict these functionals along the morphism
+$p : \Vect \ltimes \hOmega^1_{n,cl}$ to obtain functionals
+\ben
+\Tilde{I}^{\rm W}[L] := p^*(I^{\rm W}[L]) \in \clie^\# (\Vect 
+\ltimes \hOmega^1_{n,cl} ; \clie^\#(\DD \fg_n^\RR) [[ \hbar ]] .
+\een 
+The same argument as above shows that this pre-quantization is
+actually a quantization; that is, there is no obstruction. 
+
+\begin{prop} The functionals $\{\Tilde{I}^{\rm W}[L]\}$ define a
+  quantization for the $\Vect \ltimes \hOmega^1_{n,cl}$-equivariant
+  theory.
+\end{prop}
+
+\subsubsection{A deformation}
+
+We are interested in a deformation of this theory given by the
+additional cocycle present in the extended case. The map $J :
+\hOmega^1_{n,cl} \to \Def_n$ from \owen{add cross ref} extends to a map
+\ben
+J : \Vect \ltimes \hOmega^1_{n,cl} \to \Def_n
+\een
+that sends $(X,\theta) \mapsto J_\theta$. Hence we can realize $J$
+as a cocycle in $\Def_n^{\rm W}$. Tautologically, this cocycle corresponds to
+the identity cocycle $\id_{\Omega^1} \in \clie^*(\Vect \ltimes
+\hOmega^1_{n,cl} ; \hOmega^1_{n,cl})$ under the quasi-isomorphism~(\ref{extdef}). 
+
+We then obtain a deformation of the quantum theory as follows. For $L > 0$
+define the functional 
+\ben
+J[L] := \lim_{\epsilon \to 0} \sum_{\substack{\Gamma \in
+    \text{\rm Trees}\\ v \in V(\Gamma)}} W_{\Gamma, v}(P_{\epsilon <
+  L}, I, J)
+\een
+where the sum is over graphs and distinguished vertices. The notation $W_{\Gamma, v}(P_{\epsilon <
+  L}, I^{\rm W}, J)$ means that we compute the weight of the graph $\Gamma$
+with $J$ placed at the vertex $v$ and $I^{\rm W}$ placed at all other
+vertices. \owen{Add picture!}
+
+\begin{prop} \brian{ref any of Si's papers here, he always proves this
+    fact}For each $L > 0$ the functional $I^{\rm W}[L] + \hbar J[L]$
+  satisfies the scale $L$ quantum master equation
+\ben
+(\d_{dR} + \d_{\Vect \ltimes \hOmega^1_{n,cl}}) (I^{\rm W}[L] + \hbar
+J[L]) + \frac{1}{2} \{I^{\rm W}[L] + \hbar J[L], I^{\rm W}[L] + \hbar
+J[L]\}_L + \hbar \Delta_L (I^{\rm W}[L] + \hbar J[L]) = 0 .
+\een
+Thus, the family of functionals $\{\Tilde{I}^{\rm W}[L] + \hbar
+  J[L]\}_{L > 0}$ defines a quantization of the $\Vect \ltimes
+  \hOmega^1_{n,cl}$-equivariant theory. 
+\end{prop}
