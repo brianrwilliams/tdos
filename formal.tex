@@ -5,8 +5,15 @@ The purpose of this section is to describe a model for twisted differential oper
 
 \subsection{A quick review of descent}
 
-We follow the approach of Gelfand and Kazhdan \cite{GK} for the construction of ``natural" objects in differential geometry. 
+Our approach to studying topological mechanics relies on a description of the target smooth manifold in the style of formal geometry. 
+As we have discussed, our method is to consider topological mechanics on the {\em formal disk} that is equivariant for the action of all formal automorphisms. 
+To obtain topological mechanics on a smooth manifold $X$ we apply {\em formal descent} to this theory on the formal disk.
+
+Our version of descent has appeared in the formal geometry of Gelfand and Kazhdan \cite{GK} in the construction of ``natural" objects in differential geometry. 
 By natural, we mean that these construction apply uniformly over the category of smooth manifolds (of a fixed dimension) possibly equipped with a local geometry (such as a symplectic or complex structure). 
+Our construction of the one-dimensional theory via descent is very close to the last two author's 
+construction of {\em chiral differential operators} from BV quantization in \cite{GGW}. 
+Because of this, our review of formal geometry will be brief, and we refer the reader to more detailed explanations and proofs to our prior work. 
 
 The central object, associated to each smooth $n$-manifold $X$, is the bundle of coordinates $X^{coor}$. 
 The fiber over a point $x \in X$ consists of the space of formal coordinates centered at $x$. 
@@ -20,11 +27,77 @@ The crucial point of formal geometry is that this principal $\Aut_n$-bundle carr
 The flat connection is valued in the Lie algebra of {\em all} formal vector fields $\Vect$.	
 The Lie algebra of $\Aut_n$ consists of formal vector fields that vanish at the origin, which is a strict sub Lie algebra of all formal vector fields, so we are leaving the ordinary category of principal bundles with connection. 
 
-\brian{continue summary}
-
 \subsubsection{The descent functor}
 
+The descent functor takes as input a geometric object (like a vector bundle) on the formal disk and outputs a universal object on the category of smooth manifolds. 
+
+It is most convenient for us to use a simplification of the coordinate bundle $X^{coor}$. 
+Consider the map that projects onto the linear jet of the formal coordinate
+\ben
+\pi_1 : X^{coor} \to \Fr_X .
+\een
+Splittings of this map that are equivariant for the group $\GL_n$ of this map always exist. 
+Locally, such a splitting amounts to exponentiating a linear frame to a full formal coordinate.
+In fact, every \brian{torsion free} connection $\nabla$ on $X$ defines a global exponentiation and hence a splitting $\sigma_\nabla : \Fr_X \to X^{coor}$ of $\pi_1$. 
+
+The flat connection on $X^{coor}$ determines an element $\omega \in \Omega^1(X^{coor} ; \Vect)$. 
+Using the splitting, we can pull-back this flat connection to obtain a $\GL_n$-invariant element $\omega_\nabla := \sigma_\nabla^* \omega^{coor} \in \Omega^1(\Fr_X ; \Vect)$ satisfying 
+\ben
+\d_{dR} \omega_\nabla + \frac{1}{2}[\omega_\nabla,\omega_\nabla] = 0
+\een
+where $\d_{dR}$ is the de Rham differential on $\Fr_X$ and $[-,-]$ is induced from the Lie bracket of formal vector fields.
+
+To define descent, we need to fix a convenient category of modules for formal vector fields and $\GL_n$.
+The class of objects we consider are $\GL_n$-representations $\sV$ (possibly infinite dimensional) that have a compatible structure of a $\Vect$-module. 
+For instance, if $X \in \Vect$ ...
+We denote this category of modules by $\Mod_{(\Vect, \GL_n)}$. 
+In the literature, this is known as the category of modules for the Harish--Chandra pair $(\Vect, \GL_n)$. 
+
+We want to consider modules that behave like vector bundles on the formal disk. 
+Let $\hO_n = \CC[[t_1,\ldots,t_n]]$ denote the ring of formal power series.
+If $\sV$ is a $(\Vect, \GL_n)$-module we require that it admits a $\GL_n$-equivariant splitting
+\ben
+\sV = \hO_n \tensor_\CC V
+\een
+where $\GL_n$ acts on $\hO_n$ in the natural way, and $V$ is some finite dimensional $\GL_n$-representation. 
+We refer to such objects as {\em formal vector bundles}. 
+They form a category that we denote $\VB_n$. 
+
+We denote the category of smooth finite dimensional vector bundles on $X$ by $\VB_X$. 
+Let ${\rm Pro}(\VB_X)$ denote the category of pro-vector bundles. 
+An object in ${\rm Pro}(\VB_X)$ consists of a sequence of vector bundles 
+\brian{Did we flip pro and ind objects in the CDO paper?}
+
+We are now ready to define the descent functor.
+
+\begin{dfn} Let $X$ be a smooth manifold equipped with a connection. 
+Define the functor
+\ben
+\desc_X : \VB_n \to \Pro(\VB_X))_{flat}
+\een
+that sends a formal vector bundle $\sV = \hO_n \tensor V$ to the pro vector bundle...\brian{I'm worried I'm mixing up pro and ind}
+\end{dfn}
+
+Given a flat vector bundle we can take its flat sections to obtain a sheaf on $X$. 
+For the flat bundle $\desc_X(\cV)$ we denote this sheaf by $\sdesc_X(\sV)$.
+This sheaf is automatically locally free and hence corresponds to the sheaf of sections of a finite dimensional vector bundle. 
+
 \subsubsection{Characteristic classes}
+
+An exact sequence of formal vector bundles 
+\ben
+\sA \to \sB \to \sC
+\een
+is classified by an element in the ext-group $\Ext_{\VB_n}^1(\sC, \sA)$. 
+In \cite{GGW} we show that for each $k$ the ext-group $\Ext^k_{\VB_n}(\sC, \sA)$ is canonically identified with the {\em relative Chevalley--Eilenberg cochains} $\clie^k(W_n , \GL_n ; \sC^\vee \tensor_{\hO_n} \sA)$, where the $(-)^\vee$ denotes the $\hO_n$-linear dual. 
+
+
+In Lemma 2.28 of \cite{GGW} we prove that the functor $\sdesc_X(-)$ is exact. 
+In particular, applied to the exact sequence \ref{exact seq} is an exact sequence of formal vector bundles we obtain a map 
+\ben
+{\rm char}_X : \clie^k(W_n , \GL_n ; \sC^\vee \tensor_{\hO_n} \sA) \to H^k(X ; \sdesc_X(\sC)^\vee \tensor_{\sO_X} \sdesc_X(\sA)) .
+\een
+that we call the {\em characteristic map}.
 
 \subsection{Formal Lie algebroids}
 
@@ -47,17 +120,18 @@ such that
 \end{itemize}
 \end{dfn}
 
-\brian{I want to say that this is a Lie-Reinhert algebra in the category $\VB$...}
+\begin{rmk} Formal Lie algebroids are precisely Lie--Rinehart algebras over the ring $\hO_n$ that are equivariant for the pair $(\Vect, \GL_n)$. 
+\end{rmk}
 
-We define the category $\Algbd_n$ to be the full subcategory of $\VB_n$ consisting of formal Lie algebroids.
+We define the category $\Algd_n$ to be the full subcategory of $\VB_n$ consisting of formal Lie algebroids.
 The following is an immediate consequence of the functoriality of descent.
+
 \begin{lem}
 Suppose $\sL$ is a formal Lie algebroid. 
-Then, $\desc_{\GK}(\sL)$ is a Lie algebroid on the category of smooth $n$-manifolds. 
-In particular, for each manifold $X$, $\sdesc_X(\sL)$ has the structure of a Lie algebroid on $X$.
+Then, $\sdesc_X(\sL)$ has the structure of a Lie algebroid on $X$.
 \end{lem}
 
-\brian{say what I mean by a ``Lie algebroid on a category"}
+It is immediate to see that the descent of the formal Lie algebroid $\hT_n$ is the standard Lie algebroid. 
 
 \subsubsection{Enveloping algebroid}
 
@@ -89,15 +163,31 @@ The {\em enveloping algebra} of the formal Lie algebroid $\cL$ is the quotient
 It is immediate to see that $\sU_{\hO_n}(\sL)$ is an associative algebra object in the category of formal vector bundles. 
 By monoidality of the descent functor, we $\sdesc_{\GK}(\sL)$ is a sheaf of associative algebras on the category of $n$-manifolds. 
 
-The next proposition follows from properties of the $\sdesc$ functor, specifically Lemma \ref{lem:descexact}; as $\sdesc$ is right exact, it in particular preserves finite colimits.  
+\begin{eg} 
+Consider the $\hO_n$-module  $\hT_n$, which has a natural formal Lie
+  algebroid structure via the Lie bracket of vector
+  fields. The anchor map is the identity map. It is straightforward to exhibit
+  an isomorphism $\sU_{\hO_n} (\hT_n) \cong \hA_n$ of algebras in the category $\VB_n$.
+\end{eg}
 
-\begin{prop}\label{prop:enveloping}
-Let $\sL$ be a formal Lie algebroid and $X$ a smooth manifold equipped with a Gelfand--Kazhdan structure. 
+We have already mentioned that $\sdesc$ is exact, it in particular preserves finite colimits.  
+An immediate corrollary of this is the following.
+
+\begin{cor}\label{prop:enveloping}
+Let $\sL$ be a formal Lie algebroid and $X$ a smooth manifold. 
 Then, there is an isomorphism of sheaves of associative algebras on~$X$:
 \ben
 \sdesc_X(\sU_{\hO_n}\sL) \cong \sU_{\sO_X} (\sdesc(\sL)) .
 \een
-\end{prop}
+\end{cor}
 
+\begin{eg} 
+Let $\hA_n$ denote the associative Weyl algebra on generators $t_1,\ldots, t_n$ and $\frac{\partial}{\partial t_1},\ldots, \frac{\partial}{\partial t_n}$. 
+The relation is $[\frac{\partial}{\partial t_i}, t_j] = \delta_{ij}$. 
+Consider the formal vector bundle $\hT_n$, which has a natural formal Lie
+  algebroid structure via the Lie bracket of vector
+  fields. The anchor map is the identity map. It is straightforward to exhibit
+  an isomorphism $\sU_{\hO_n} (\hT_n) \cong \hA_n$ of algebras in $(\Vect, \GL_n)$-modules.
+\end{eg}
 
 
