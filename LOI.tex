@@ -1,6 +1,8 @@
 \documentclass[11pt]{amsart}
 
-\linespread{1.25}
+\linespread{1.2}
+\addtolength{\footskip}{\baselineskip}
+
 
 \usepackage{macros}
 
@@ -13,32 +15,36 @@
 \begin{document}
 \maketitle
 
+\thispagestyle{empty}
+
 \section*{Mathematical Topic}
 
-We propose a Mathematical Research Community (MRC) in ``Derived Geometry: Interactions with Quantum Field Theory.'' This MSRI program is in Spring 2019, and is designed to increase number of young researchers (particularly from underrepresented groups) in the field. 
+We propose a Mathematical Research Community (MRC) in ``Derived Geometry: Interactions with Quantum Field Theory.'' 
 The problems we propose share a common theme: relationships and applications of homotopical algebra and derived algebraic geometry to quantum field theory (QFT). 
 Moreover, we are compelled by connections to other areas such as algebraic topology, representation theory, and arithmetic geometry. 
 The full scope of the material we present is fairly advanced, but we'd like to stress the plethora of approachable problems embedded in each of the individual topics.
-\brian{Should I be more specific. What did you mean by Bourbaki?}
 
-BW has had experience in organizing conferences on related topics such as a lecture series at Oberwolfach on Costello and Gwilliam's approach to perturbative QFT through the language of factorization algebras \cite{oberwolfach}. 
 
-\ryan{IAS
-%2012-2013
-and MRC (2017) in HTT}
+We note that the proposed topic is similar to the program at MSRI during the Spring of 2019. We view this as an asset as the MRC will further grow this dynamic field and increase the participation of junior researchers (particularly from underrepresented groups) in the field.  There is precedent for an MRC building upon the success of a special semester program: the MRC in Homotopy Type Theory in 2017 was preceded by a special focus year at the Institute for Advanced Studies.
 
-\section*{Key Senior Personnel} Would be nice to have some diversity among the 3--6. \ryan{Probably should remove myself from the following list!} \ryan{Should add affiliations and indicate commitment from some people}. Overlapping expertise...
+
+
+\section*{Key Senior Personnel} We have assembled a list of senior mathematicians to lead the MRC and mentor the research groups.  The list below is excessive with overlapping research specialities in order to account for potential scheduling conflicts.
 
 \begin{enumerate}
-\item \label{Sarah} Sarah Scherotzke
-\item \label{Damien} Damien Calaque (indicated commitment)
-\item \label{DavidJ} David Jordan
-\item \label{DavidA} David Ayala (indicated commitment)
-\item \label{Ryan} Ryan Grady (indicated commitment)
-\item \label{DavidBZ} David Ben-Zvi
-\item \label{PavelS} Pavel Safronov
-\item \label{Matt} Matt Szczesny (probably committed)
+\item \label{Sarah} Sarah Scherotzke, Fellow, Hausdorff Center for Mathematics (Bonn);
+\item \label{Claudia} Claudia Scheimbauer, Research Fellow, Oxford University;
+\item \label{Damien} Damien Calaque, Professor, Universit\'e Montpellier;
+\item \label{DavidJ} David Jordan, Fellow/Reader, University of Edinburgh;
+\item \label{DavidA} David Ayala, Assistant Professor, Montana State University;
+\item \label{Ryan} Ryan Grady, Assistant Professor, Montana State University;
+\item \label{DavidBZ} David Ben-Zvi, Professor, University of Texas (Austin);
+\item \label{PavelS} Pavel Safronov, Lecturer, University of Zurich;
+\item \label{Matt} Matt Szczesny, Associate Professor, Boston University. 
 \end{enumerate}
+
+We have received preliminary confirmation of interest from Calaque, Ayala, Grady, and Szczesny. Further, Grady has agreed to function as lead organizer, i.e., he will be the first contact on issues regarding participants, logistics, etc. Grady has experience in this role, organizing workshops at the Simons Center for Geometry and Physics (2014), The Perimeter Institute for Theoretical Physics (2016 and 2017), and a NSF-CBMS workshop at Montana State University (2017). 
+
 
 \section*{Problems on which to Concentrate}
 
@@ -46,7 +52,7 @@ and MRC (2017) in HTT}
 \item[(A)] The categorified Chern character via QFT.  T\"oen and Vezzosi \cite{TV1} and then Ben-Zvi, Francis and Nadler \cite{BFN} illustrated how topological field theory naturally leads to a categorification of the Chern character.  There is a higher categorical refinement of the latter result by Schertotzke (with Hoyois and Sibilla) \cite{HSS}.  Their result should have a natural interpretation/extension via extended topological quantum field theory. This project would be the specialty of (\ref{Sarah}) and (\ref{DavidBZ}).
 
 \item[(B)] Supersymmetry for derived stacks and derived spin structures. 
-This work will extend the perturbative field theory approach of Costello and Gwilliam \cite{CG1} and \cite{CG2}  for supersymmetric space-times. For instance, in dimension two the resulting observable theory includes the theory of superconformal vertex algebras. This project is one possible realization of the program of Stolz and Teichner on geometric models for elliptic cohomology.
+This work will extend the perturbative field theory approach of Costello and Gwilliam \cite{CG1} and \cite{CG2}  to supersymmetric space-times. For instance, in dimension two the resulting observable theory includes the theory of superconformal vertex algebras. This project is one possible realization of the program of Stolz and Teichner on geometric models for elliptic cohomology.
 This work could be led by (\ref{Damien}), (\ref{Ryan}), (\ref{DavidBZ}) or (\ref{Matt}).  
 
 \item[(C)] An extension of AKSZ to shifted Poisson structures and degenerate field theories: the CME and BRST complex. The AKSZ formalism \cite{AKSZ} is a well trodden path for developing topological quantum field theories from (shifted) symplectic structures. This work aims to develop a similar formalism for the slightly less rigid case of (shifted) Poisson structures.
@@ -54,7 +60,7 @@ Such a formalism would yield applications to generalized (complex) geometry and 
 This could be led by (\ref{Damien}) or (\ref{Ryan}) with (\ref{PavelS}).
 
 \item[(D)] Topological orders/phases via factorization homology. 
-This would aim to clarify for a mathematical community the recent computations/assertions of Liang Kong, Xiao-Gang Wen, and collaborators \cite{KW1} and \cite{KW2}. Beyond confirming and extending some physical assertions, this project would offer a slew of computations of factorization homology for algebras, categories, and higher categories; to date, computations are severely lacking in the mathematical literature. Though physically motivated, this project only requires mathematical understanding, not significant physical background. This work would be led by (\ref{DavidJ}) and  (\ref{DavidA}).
+This would aim to clarify for a mathematical community the recent computations/assertions of Liang Kong, Xiao-Gang Wen, and collaborators \cite{KW1} and \cite{KW2}. Beyond confirming and extending some physical assertions, this project would offer a slew of computations of factorization homology for algebras, categories, and higher categories; to date, computations are severely lacking in the mathematical literature. Though physically motivated, this project only requires mathematical understanding, not significant physical background. This work would be led by (\ref{Claudia}), (\ref{DavidJ}) and  (\ref{DavidA}).
 
 \end{itemize}
 
@@ -64,7 +70,6 @@ This would aim to clarify for a mathematical community the recent computations/a
 \item Moritz Groth's {\it A short course on $\infty$-categories}, \cite{MG}.
 \item Sections 1 and 2 of T\"oen's survey, {\it Derived Algebraic Geometry}, \cite{Toen}.
 \item Dan Freed's overview, {\it The Cobordism Hypothesis}, \cite{DF}.
-\item Francis and Ayala's treatment of factorization homology, \cite{AF1}.
 \end{itemize}
 
 
@@ -77,7 +82,7 @@ This would aim to clarify for a mathematical community the recent computations/a
 
 \subsection*{Project C} Both Safronov's lecture notes, \cite{PS}, and Calaque's lectures, \cite{DC}, provide sufficient background for the proposed work.
 
-\subsection*{Project D} The lecture notes of Ingmar and Max \cite{MS}. 
+\subsection*{Project D} The recent lecture notes on topological phases \cite{MS} provide a mathematical introduction to this subject. Further, the introduction to \cite{AF1} gives a nice overview of factorization homology.
 
 
 
