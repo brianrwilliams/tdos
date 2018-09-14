@@ -1,0 +1,23 @@
+\contentsline {section}{\tocsection {}{1}{Introduction}}{1}{section.1}
+\contentsline {section}{\tocsection {}{2}{(Twisted) Differential operators via formal geometry}}{1}{section.2}
+\contentsline {subsection}{\tocsubsection {}{2.1}{A quick review of descent}}{1}{subsection.2.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{2.1.1}{The descent functor}}{2}{subsubsection.2.1.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{2.1.2}{Characteristic classes}}{3}{subsubsection.2.1.2}
+\contentsline {subsection}{\tocsubsection {}{2.2}{Formal Lie algebroids}}{3}{subsection.2.2}
+\contentsline {subsubsection}{\tocsubsubsection {}{2.2.1}{Enveloping algebroid}}{4}{subsubsection.2.2.1}
+\contentsline {section}{\tocsection {}{3}{The Formal Theory}}{5}{section.3}
+\contentsline {subsection}{\tocsubsection {}{3.1}{The ${{\rm W}_n}$ action}}{5}{subsection.3.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.1.1}{}}{6}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.1.2}{}}{6}{subsubsection.3.1.2}
+\contentsline {subsection}{\tocsubsection {}{3.2}{The deformation complex}}{7}{subsection.3.2}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.2.1}{One-forms as local functionals}}{7}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.2.2}{Proof of Proposition \ref {propdef}}}{7}{subsubsection.3.2.2}
+\contentsline {subsection}{\tocsubsection {}{3.3}{BV quantization}}{8}{subsection.3.3}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.3.1}{Pre-quantization}}{8}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.3.2}{Vanishing of the obstruction}}{8}{subsubsection.3.3.2}
+\contentsline {subsection}{\tocsubsection {}{3.4}{The ``extended'' theory}}{8}{subsection.3.4}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.4.1}{Quantization}}{9}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.4.2}{A deformation}}{9}{subsubsection.3.4.2}
+\contentsline {section}{\tocsection {}{4}{The Global Theory}}{9}{section.4}
+\contentsline {subsection}{\tocsubsection {}{4.1}{Descending to the Global Classical Theory}}{9}{subsection.4.1}
+\contentsline {subsection}{\tocsubsection {}{4.2}{Descending to the Global Quantum Theory}}{10}{subsection.4.2}
