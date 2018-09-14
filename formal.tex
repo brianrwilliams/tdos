@@ -1,19 +1,22 @@
 \section{(Twisted) Differential operators via formal geometry}
 
-The purpose of this section is to describe a model for twisted differential operators using the language of Gelfand--Kazhdan formal geometry. 
-
+The purpose of this section is to describe twisted differential operators using the language of Gelfand-Kazhdan formal geometry. 
 
 \subsection{A quick review of descent}
 
 Our approach to studying topological mechanics relies on a description of the target smooth manifold in the style of formal geometry. 
 As we have discussed, our method is to consider topological mechanics on the {\em formal disk} that is equivariant for the action of all formal automorphisms. 
-To obtain topological mechanics on a smooth manifold $X$ we apply {\em formal descent} to this theory on the formal disk.
+To obtain topological mechanics on a smooth manifold $X$ we apply {\em Gefland-Kazhdan descent} to this theory on the formal disk.
 
-Our version of descent has appeared in the formal geometry of Gelfand and Kazhdan \cite{GK} in the construction of ``natural" objects in differential geometry. 
+We will thus rely on a description of twisted differential operators on $X$ in the style of formal geometry. 
+Our formulation is largely motivated by the works of Kontsevich \cite{KontsevichDQ1}, Fedosov \cite{Fedosov}, and Nest-Tsygan \cite{NT1} n their approaches to deformation quantization and the algebraic index theorem.
+It also bears a close relationship to approaches made later on by Cattaneo-Felder-Tomassini \cite{CFGlobalization, CFTomassini}.
+Because of the multitude of references already out there, we make our discussion brief and to the point. 
+
+The setting of formal geometry that we consider has its foundations in the work of Gelfand and Kazhdan \cite{GK}.
+Categorically, the outcome is a construction of ``natural" objects in differential geometry in a functorial way from objects on the formal disk.  
 By natural, we mean that these construction apply uniformly over the category of smooth manifolds (of a fixed dimension) possibly equipped with a local geometry (such as a symplectic or complex structure). 
-Our construction of the one-dimensional theory via descent is very close to the last two author's 
-construction of {\em chiral differential operators} from BV quantization in \cite{GGW}. 
-Because of this, our review of formal geometry will be brief, and we refer the reader to more detailed explanations and proofs to our prior work. 
+Our construction of the one-dimensional theory via Gelfand-Kazhdan descent is very close to the last two author's construction of {\em chiral differential operators} from BV quantization in \cite{GGW}. 
 
 The central object, associated to each smooth $n$-manifold $X$, is the bundle of coordinates $X^{coor}$. 
 The fiber over a point $x \in X$ consists of the space of formal coordinates centered at $x$. 
@@ -23,35 +26,38 @@ The formal disk $\hD^n$ is defined as the affine formal scheme with ring of func
 The bundle $X^{coor} \to X$ is a principal bundle for the group of automorphisms of this formal scheme that fix the maximal ideal, which we denote $\Aut_n$. 
 This principal $\Aut_n$-bundle factors through the ordinary $\GL_n$ frame bundle $\Fr_X \to X$, in since there is a natural map of bundles $X^{coor} \to {\rm Fr}_X$ that truncates the full $\infty$-jet to remember only the linear jet. 
 
-The crucial point of formal geometry is that this principal $\Aut_n$-bundle carries a {\em flat connection}. 
+The crucial point is that this principal $\Aut_n$-bundle carries a {\em flat connection}. 
 The flat connection is valued in the Lie algebra of {\em all} formal vector fields $\Vect$.	
 The Lie algebra of $\Aut_n$ consists of formal vector fields that vanish at the origin, which is a strict sub Lie algebra of all formal vector fields, so we are leaving the ordinary category of principal bundles with connection. 
 
-\subsubsection{The descent functor}
+\subsubsection{Formal to global}
 
+What we call Gelfand-Kazhdan descent is the functorial prescription of taking objects on the formal disk and gluing them over an arbitrary smooth manifold.
 The descent functor takes as input a geometric object (like a vector bundle) on the formal disk and outputs a universal object on the category of smooth manifolds. 
 
-It is most convenient for us to use a simplification of the coordinate bundle $X^{coor}$. 
 Consider the map that projects onto the linear jet of the formal coordinate
 \ben
 \pi_1 : X^{coor} \to \Fr_X .
 \een
 Splittings of this map that are equivariant for the group $\GL_n$ of this map always exist. 
 Locally, such a splitting amounts to exponentiating a linear frame to a full formal coordinate.
-In fact, every \brian{torsion free} connection $\nabla$ on $X$ defines a global exponentiation and hence a splitting $\sigma_\nabla : \Fr_X \to X^{coor}$ of $\pi_1$. 
+
+\begin{rmk}
+Every \brian{torsion free} connection $\nabla$ on $X$ defines a global exponentiation and hence a splitting $\sigma_\nabla : \Fr_X \to X^{coor}$ of $\pi_1$. 
+\brian{reference?}
+\end{rmk}
 
 The flat connection on $X^{coor}$ determines an element $\omega \in \Omega^1(X^{coor} ; \Vect)$. 
 Using the splitting, we can pull-back this flat connection to obtain a $\GL_n$-invariant element $\omega_\nabla := \sigma_\nabla^* \omega^{coor} \in \Omega^1(\Fr_X ; \Vect)$ satisfying 
 \ben
-\d_{dR} \omega_\nabla + \frac{1}{2}[\omega_\nabla,\omega_\nabla] = 0
+\d \omega_\nabla + \frac{1}{2}[\omega_\nabla,\omega_\nabla] = 0
 \een
-where $\d_{dR}$ is the de Rham differential on $\Fr_X$ and $[-,-]$ is induced from the Lie bracket of formal vector fields.
+where $\d$ is the de Rham differential on $\Fr_X$ and $[-,-]$ is the Lie bracket of formal vector fields extended to the de Rham complex.
 
-To define descent, we need to fix a convenient category of modules for formal vector fields and $\GL_n$.
-The class of objects we consider are $\GL_n$-representations $\sV$ (possibly infinite dimensional) that have a compatible structure of a $\Vect$-module. 
-For instance, if $X \in \Vect$ ...
+To define descent, we need to fix a category of modules for formal vector fields and $\GL_n$.
+The class of objects we consider are $\GL_n$-representations $\sV$ (possibly infinite dimensional) that have a compatible structure of a topological $\Vect$-module. 
 We denote this category of modules by $\Mod_{(\Vect, \GL_n)}$. 
-In the literature, this is known as the category of modules for the Harish--Chandra pair $(\Vect, \GL_n)$. 
+Precisely, these are modules for the Harish--Chandra pair $(\Vect, \GL_n)$, whose underlying $\Vect$-module structure is continuous. 
 
 We want to consider modules that behave like vector bundles on the formal disk. 
 Let $\hO_n = \CC[[t_1,\ldots,t_n]]$ denote the ring of formal power series.
