@@ -1,0 +1,353 @@
+\section{A Deformation: Twisted Differential Operators}
+
+
+
+
+
+
+We will now extend our $\Vect$-equivariant theory by the module of
+deformations (respecting certain symmetries) that we computed
+above. Thus, we will consider the extension of the Lie algebra $\Vect$
+by the module $\hOmega^1_{n,cl}$ given by $\Vect \ltimes
+\hOmega^1_{n,cl}$. Just as above, we show that there is a quantization
+of this classical equivariant theory. This theory will admit a useful and
+interesting class of deformations when we descend
+over arbitrary target manifolds. 
+
+The extended classical theory is simple to describe. The
+$\Vect$-equivariant theory above was encoded by a map of Lie
+algebras
+\ben
+I^{\rm W} : \Vect \to \cloc^*(\DD \fg_n^\RR)[-1] .
+\een 
+Our extended classical theory is encoded by the restriction of this
+equivariant theory along the map of Lie algebras $p : \Vect \ltimes
+\hOmega^1_{n,cl} \to \Vect$. It is immediate that this defines a $\Vect
+\ltimes \hOmega^1_{n,cl}$-equivariant classical field theory. 
+
+
+Denote by $\Tilde{\Def}^{\rm W}_n$ the extended equivariant
+deformation complex. We can realize it as the tensor product
+\ben
+\Tilde{\Def}^{\rm W}_n = \clie^*(\Vect \ltimes \hOmega^1_{n,cl} ;
+\Def_n) \cong \clie^*(\Vect \ltimes \hOmega^1_n)
+\tensor_{\clie^*(\Vect)} \Def_n^{\rm W} .
+\een
+Thus, the quasi-isomorphism $J$ extends to a quasi-isomorphism
+\be\label{extdef}
+\Tilde{J} : \clie^*(\Vect \ltimes \hOmega^1_n ; \hOmega^1_n)
+\xto{\simeq} \left(\Tilde{\Def}_n^{\rm W}\right)^{\RR^\times \times
+  \Aff(\RR)} .
+\ee
+Here, $\hOmega^1_{n,cl}$ denotes the restriction of the $\Vect$-module
+along the map $p : \Vect \ltimes \hOmega^1_{n,cl} \to \Vect$. 
+
+There is a natural cocycle in $\clie^1(\Vect \ltimes \hOmega^1_{n,cl} ;
+\hOmega^1_{n,cl})$ given by the identity $\id_{\Omega^1}$ on one-forms. 
+
+\begin{lem} The space ${\rm H}^1(\Vect \ltimes \hOmega^1_{n,cl} ,
+  \GL_n ; \hOmega^1_{n,cl})$ is two dimensional spanned by $c_1^{\rm
+    GF}(\hT_n)$ and $\id_{\Omega^1}$. 
+\end{lem}
+
+Thus, the cocycle $\id_{\Omega^1}$ determines an additional cohomologically non-trivial deformation in the extended case. 
+
+\subsubsection{Quantization} 
+
+We obtain a quantization for this classical theory in the same way as
+in the non-extended case. In the $\Vect$-equivariant theory we showed
+that we have a quantization given by the collection of functionals
+$\{I^{\rm W}  [L]\} \subset \clie^\# (\Vect ; \clie^\#(\DD \fg_n^\RR))
+[[ \hbar ]]$. We can restrict these functionals along the morphism
+$p : \Vect \ltimes \hOmega^1_{n,cl}$ to obtain functionals
+\ben
+\Tilde{I}^{\rm W}[L] := p^*(I^{\rm W}[L]) \in \clie^\# (\Vect 
+\ltimes \hOmega^1_{n,cl} ; \clie^\#(\DD \fg_n^\RR) [[ \hbar ]] .
+\een 
+The same argument as above shows that this pre-quantization is
+actually a quantization; that is, there is no obstruction. 
+
+\begin{prop} The functionals $\{\Tilde{I}^{\rm W}[L]\}$ define a
+  quantization for the $\Vect \ltimes \hOmega^1_{n,cl}$-equivariant
+  theory.
+\end{prop}
+
+\subsubsection{A deformation}
+
+We are interested in a deformation of this theory given by the
+additional cocycle present in the extended case. The map $J :
+\hOmega^1_{n,cl} \to \Def_n$ from \owen{add cross ref} extends to a map
+\ben
+J : \Vect \ltimes \hOmega^1_{n,cl} \to \Def_n
+\een
+that sends $(X,\theta) \mapsto J_\theta$. Hence we can realize $J$
+as a cocycle in $\Def_n^{\rm W}$. Tautologically, this cocycle corresponds to
+the identity cocycle $\id_{\Omega^1} \in \clie^*(\Vect \ltimes
+\hOmega^1_{n,cl} ; \hOmega^1_{n,cl})$ under the quasi-isomorphism~(\ref{extdef}). 
+
+We then obtain a deformation of the quantum theory as follows. For $L > 0$
+define the functional 
+\ben
+J[L] := \lim_{\epsilon \to 0} \sum_{\substack{\Gamma \in
+    \text{\rm Trees}\\ v \in V(\Gamma)}} W_{\Gamma, v}(P_{\epsilon <
+  L}, I, J)
+\een
+where the sum is over graphs and distinguished vertices. The notation $W_{\Gamma, v}(P_{\epsilon <
+  L}, I^{\rm W}, J)$ means that we compute the weight of the graph $\Gamma$
+with $J$ placed at the vertex $v$ and $I^{\rm W}$ placed at all other
+vertices. \owen{Add picture!}
+
+\begin{prop} \brian{ref any of Si's papers here, he always proves this
+    fact}For each $L > 0$ the functional $I^{\rm W}[L] + \hbar J[L]$
+  satisfies the scale $L$ quantum master equation
+\ben
+(\d_{dR} + \d_{\Vect \ltimes \hOmega^1_{n,cl}}) (I^{\rm W}[L] + \hbar
+J[L]) + \frac{1}{2} \{I^{\rm W}[L] + \hbar J[L], I^{\rm W}[L] + \hbar
+J[L]\}_L + \hbar \Delta_L (I^{\rm W}[L] + \hbar J[L]) = 0 .
+\een
+Thus, the family of functionals $\{\Tilde{I}^{\rm W}[L] + \hbar
+  J[L]\}_{L > 0}$ defines a quantization of the $\Vect \ltimes
+  \hOmega^1_{n,cl}$-equivariant theory. 
+\end{prop}
+
+
+
+
+
+\ryan{This is from an old draft...}
+
+
+
+\subsection{Extended descent}
+
+We wish to extend the above construction of Gelfand-Kazhdan descent by
+an element $\alpha \in {\rm H}^1(X ; \Omega^1_{cl,X})$.
+\owen{This sentence is a bit cryptic. We don't extend the construction by a 2-form but rather work with an HC extension.}
+This will give us a formal construction of the sheaf of twisted
+differential operators for any $\alpha$ as above.
+\owen{"Formal" here is needlessly confusing. We mean that we can construct TDOs by a version of formal geometry.}
+
+Let $\hOmega^1_{n,cl}$ denote the closed one-forms on $\hD^n$.
+\owen{We should say somewhere (and at least remind here) whether we mean the cochain complex obtained by truncating the de Rham complex or the actual closed one-forms.} 
+The $(\Vect, \GL_n)$-structure comes from Lie derivative by vector fields on forms and linear
+changes of frame. From above, we know that for any
+choice of a Gelfand-Kazhdan structure $\sigma$ on $X$, we have an
+isomorphism of sheaves $\sdesc(\sigma, \hOmega^1_{n,cl}) \cong \Omega^1_{X,cl}$.
+
+Consider the extension  
+\ben
+0 \to \hOmega^1_{n,cl} \to \Vect \ltimes \hOmega^1_{n,cl} \to \Vect \to
+0 
+\een
+where 
+\ben
+[X,\omega] = L_X \omega 
+\een
+for $X$ a vector field \owen{We've already used $X$ for the manifold} and $\omega$ lives in $\hOmega^1_{n,cl}$.
+Since $\omega$ is closed this
+can be written as $L_X \omega~=~\d(\iota_X \omega)$.
+
+The Lie algebra $\Vect$ is a sub-Lie algebra of $\Vect \ltimes
+\hOmega^1_{n,cl}$. The Lie group $\GL_n$ acts on $\Vect$ by linear
+changes of frame and this action extends to an action on $\Vect \ltimes
+\hOmega^{1}_{n,cl}$. We summarize the situation as follows.
+
+\begin{lem} 
+$(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$ forms a Harish-Chandra pair. 
+\end{lem}
+ 
+There is a natural quotient map of HC pairs
+\ben
+(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n) \to (\Vect, \GL_n) .
+\een 
+We wish to understand lifts of the $(\Vect, \GL_n)$-bundle $(\Fr_X,
+\omega^\sigma)$ along this quotient map.
+
+For a fixed GK-structure $\sigma$, a lift is the structure of a flat $(\Vect \ltimes
+\hOmega^1_{n,cl}, \GL_n)$-principal bundle on a pair $(\Fr_X, \omega)$
+such that under the map
+\ben
+\Omega^1(\Fr_X ; \Vect \ltimes \hOmega^1_{n,cl}) \to \Omega^1(\Fr_X ;
+\Vect),
+\een
+the one-form $\omega$ is sent to $\omega^\sigma$. 
+
+\begin{prop} 
+Fix a GK-structure $\sigma$ on $X$. 
+There is a natural bijection between the following two sets:
+\begin{itemize}
+\item ${\rm H}^1(X, \hOmega^1_{X,cl}) \cong {\rm H}^2_{\dR}(X)$ and
+\item the set of lifts of the flat $(\Vect, \GL_n)$-principal bundle $(\Fr_X, \omega^\sigma)$ to a flat $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$-principal bundle, up to isomorphism.
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+Consider the sheaf of closed one-forms $\Omega^1_{X, cl}$ and its
+associated sheaf of $\infty$-jets $\sJ(\Omega^1_{X,cl})$. 
+By definition of the coordinate bundle, 
+the pull-back of $\sJ(\Omega^1_{X,cl})$ along 
+the projection $\pi^{coor} : X^{coor} \to X$ returns the
+trivial sheaf of formal closed one-forms
+\ben
+(\pi^{coor})^*\left(\sJ(\Omega^1_{X,cl})\right) \cong \ul{\hOmega^1_{n,cl}}.
+\een
+Any $\alpha \in {\rm H}^1(X ; \Omega^1_{X,cl})$ defines an element in ${\rm H}^1(X ; \sJ(\Omega^1_{X,cl}))$ 
+and hence determines an element
+\ben
+(\pi^{coor})^* \alpha \in {\rm H}^1(X^{coor} ; \ul{\hOmega^1_{n,cl}}) 
+\een 
+via pull-back to the coordinate bundle.
+In turn, this element classifies a $\hOmega^1_{n,cl}$-torsor over $X^{coor}$ that we denote $X^{coor}_\alpha$. 
+Being a torsor for a constant sheaf of abelian groups, that are contractible as topological spaces, there exists sections $\sigma_{\alpha} : X^{coor} \to X^{coor}_\alpha$. 
+\owen{This last sentence is a little hard to parse. I think "sheaf of vector spaces" would be clearer than "abelian groups." Moreover, don't we have a cochain complex here? Then contractibility sounds weirder. I think we can phrase things so it's a little less distracting and the reader can see that sections obviously exist.}
+
+Recall how one constructs the principal $(\Vect, \GL_n)$-bundle structure on $\Fr_X$ from a GK-structure $\sigma$. 
+We have a sequence of bundle maps 
+\[
+X^{coor} \to \Fr_X \to X,
+\]
+and $\sigma$ determines a  splitting of the first map.
+The flat connection one-form on $\Fr_X$ is the pull-back of the Grothendieck connection $\sigma^*
+\omega^{coor}$. This Grothendieck connection is uniquely determined by the transitive
+action of $\Vect$ on $X^{coor}$. 
+Now we examine how this process would apply to~$X^{coor}_\alpha$.
+
+While $\Vect$ does not act transitively on $X^{coor}_\alpha$, 
+the extension $\Vect \ltimes \hOmega^1_{n,cl}$ does act. 
+Indeed, we have a pull-back diagram of Lie algebras
+\ben
+\xymatrix{
+\Vect \ltimes \hOmega^1_{n,cl} \ar[d] \ar[r]^-{\theta^{coor}_{\alpha}} & \cX(X^{coor}_\alpha) \ar[d] \\
+\Vect \ar[r]^-{\theta^{coor}} & \cX(X^{coor}) .
+}
+\een
+The map $\theta^{coor}$ induces an isomorphism on tangent spaces
+$\theta^{coor} : \Vect \xto{\cong} T_{\varphi} X^{coor}$ and hence so
+does $\theta^{coor}_{\alpha}$. 
+The map $(\theta_\alpha^{coor})^{-1}$ is represented by an element
+\ben
+\omega^{coor}_\alpha \in \Omega^1(X^{coor} , \Vect \ltimes \hOmega^1_{n,cl})
+\een
+satisfying the Maurer-Cartan equation. 
+
+Conversely, if we are given a $(\Vect \ltimes \hOmega^1_{n,cl})$-structure $(\Fr_X, \omega)$, 
+we can consider the characteristic map 
+\ben
+\ch : \clie^*(\Vect \ltimes \hOmega^1_{n,cl} , \GL_n ;
+\hOmega^1_{n,cl}) \to \bdesc((\Fr_X, \omega), \hOmega^1_{n,cl}) .
+\een 
+For any tensor bundle $\cV$, we have a quasi-isomorphism 
+\ben
+\bdesc((\Fr_X, \omega^\sigma), \cV) \simeq \check{\rm C}^*(X ;
+\sdesc((\Fr_X, \omega^\sigma), \cV),
+\een
+since $\bdesc((\Fr_X, \omega^\sigma), \cV)$ is an acyclic resolution
+for $\sdesc((\Fr_X, \omega^\sigma), \cV)$. Thus, we have 
+\ben
+\bdesc((\Fr_X, \omega), \hOmega^1_{n,cl}) \simeq \check{\rm C}^*(X ;
+\sdesc((\Fr_X, \omega), \hOmega^1_{n,cl})) = \check{\rm C}^*(X ;
+\Omega^1_{X, cl}) .
+\een 
+
+\owen{What does the check mean? Do we mean \v{C}ech cohomology? We should figure out what notation we want to use. I thought here we would probably just mean levelwise global sections, since we're talking about a truncated de Rham complex.}
+
+Consider the cocycle $\id_{\Omega^1_{n,cl}} \in \clie^1(\Vect \ltimes
+\hOmega^1_{n,cl} ; \hOmega^1_{n,cl})$. In cohomology, the image of
+this element under the characteristic map is an element
+\ben
+\ch([\id_{\Omega^1_{n,cl}}]) \in {\rm H}^1(X ; \Omega^1_{X, cl}) .
+\een 
+These two constructions are inverse to each other, as can be shown by direct computation. 
+\end{proof}
+
+\subsubsection{Extended Harish-Chandra modules}
+
+In this section we define the analog of the category of modules $\VB_{(\Vect,
+  \GL_n)}$ for the pair $(\Vect \rtimes \hOmega^1_{n,cl}, \GL_n)$. 
+
+First, consider the category of {\it all} Harish-Chandra modules for the pair $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$. 
+There is a subcategory of this consisting of those modules that are filtered with
+respect to the obvious two-step filtration on $\Vect \ltimes
+\hOmega^{1}_{n,cl}$ given by
+\ben
+F^1 = \Vect \ltimes \hOmega^1_{n,cl} \supset F^0 = \hOmega^1_{n,cl} .
+\een
+\owen{This isn't a subcategory as a filtration is data.}
+Let $M$ be such a module. Taking the associated graded with respect to
+this filtration we obtain a graded module ${\rm gr} \; M$ for the pair
+$(\Vect, \GL_n)$. 
+
+\begin{eg}
+We have the formal Atiyah sequence
+\be\label{broidses}
+0 \to \hO_n \to \Tilde{\cT}_n \to \hT_n \to 0,
+\ee
+where $\Tilde{\cT}_n$ is...\ryan{Finish...this sequence is corresponds to $\id_{\Omega^1_{n}} \in C^1_{Lie} (\Vect \rtimes \hOmega^1_{n,cl} , \hOmega^1_{n,cl})$}. Note that by construction this can be considered as a sequence of $(\Vect
+\ltimes \hOmega^1_{n,cl} , \GL_n)$-modules.
+\end{eg}
+
+
+
+
+\subsection{TDO's from descent}\label{sect:TDODesc} 
+
+\subsubsection{Classical theory of TDO's}
+
+We briefly recall a construction of locally trivial TDO's. A standard reference is \cite{Ginzburg} particularly section 2.2 or appendix A of \cite{Kazhdan}.
+
+
+For any $\alpha \in H^1 (X, \Omega^1_{cl})$ we have an associated Atiyah algebra
+\ben
+0 \to \cO_X \to \cT_X^\alpha \to \cT_X \to 0 .
+\een
+Up to isomorphism, this association is a bijection, i.e., Atiyah algebras are classified by $H^1 (X, \Omega^1_{cl})$.
+
+\begin{dfn} 
+The {\em twisted differential operators} $TDO^\alpha_X$ corresponding to an element $\alpha \in {\rm H}^1(X ; \Omega^1_{cl})$ is the sheaf of algebras~$\cU_{\cO_X} (\cT^\alpha_X)$.
+\end{dfn}
+
+\subsubsection{}
+
+Recall the formal Atiyah sequence
+\be\label{broidses}
+0 \to \hO_n \to \Tilde{\cT}_n \to \hT_n \to 0.
+\ee
+
+
+
+\begin{prop} Fix a GK-structure $\sigma$ on $X$. There is an isomorphism of Lie algebroids on $X$
+\ben
+\sdesc(\sigma, \alpha, \Tilde{\cT}_n) \cong \cT^\alpha_X .
+\een 
+\end{prop}
+\begin{proof} 
+Consider the short exact sequence (\ref{broidses}) of $(\Vect
+\ltimes \hOmega^1_{n,cl} , \GL_n)$ modules. It is determined by the
+cocycle $\id_{\Omega^1_{n}}$ which maps under the characteristic map
+  to $(\Fr_X, \omega^\sigma_\alpha)$
+  to the element $\alpha \in {\rm H}^1(X ; \Omega^1_{X,cl})$. Thus we
+  see that when we apply descent to the short exact sequence of
+  $(\Vect \ltimes \hOmega, \GL_n)$-modules we get a short exact
+  sequence of $\cO_X$-modules 
+\ben
+0 \to \cO_X \to \sdesc(\sigma, \alpha, \Tilde{\cT}_n) \to \cT_X \to 0,
+\een
+which is the Atiyah algebra classified by $\alpha$. We conclude that as $\cO_X$-modules
+$\sdesc(\sigma, \alpha, \Tilde{\cT}_n) \cong \cT_X^\alpha$. Moreover, by the classification of Atiyah algebras, it is an equivalence as Lie algebroids.
+\end{proof}
+
+
+It then follows from Proposition \ref{prop:enveloping} that we obtain twisted differential operators via descent of the formal Weyl algebra.
+
+\begin{cor}\label{cor:descTDO}
+Fix a GK-structure $\sigma$ and let $\alpha \in {\rm H}^1(X, \Omega^1_{cl,X})$. 
+Then 
+\[
+\sdesc(\sigma, \alpha, \hA_n) \cong TDO^\alpha_{X}.
+\]
+That is, the Gelfand-Kazhdan descent of the completed Weyl algebra $\hA_n$ 
+along the flat $(\Vect \ltimes \hOmega^1_{n,cl}, \GL_n)$-bundle $(\Fr_X, \omega_\alpha^\sigma)$ 
+recovers the sheaf of TDO's on $X$ twisted by~$\alpha$.
+\end{cor}
+
+

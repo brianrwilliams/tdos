@@ -181,3 +181,171 @@ spanned by the Gelfand-Fuks chern class $c^{\rm GF}_1(\hT_n)$.
 \subsubsection{Pre-quantization}
 
 \subsubsection{Vanishing of the obstruction}
+
+
+\subsection{Quantum Observables}
+
+\ryan{We just focus on smooth observables...fix notation below...blah...}
+
+Let's start with the classical factorization algebra which assigns to
+an interval $I \subset \RR$ the cochains on the dg Lie algebra $\DD
+\fg_n^I$. If $I \subset J$ is an embedding of open intervals then it
+follows from the Poincar\'{e} Lemma for differential forms on $\RR^n$
+that the induced map
+\ben
+\fg_n^J \xto{\simeq} \fg_n^I
+\een
+is a homotopy equivalence. It follows that $\Obs^{cl}_n$ is a locally
+constant factorization algebra. 
+
+The aim of this section is to prove the following theorem.
+
+\begin{thm}\label{thm:formalobsq} Let $I \subset \RR$ be a non-empty interval.  
+\begin{itemize}
+\item[(a)] There is a quasi-isomorphism $F_I : \hA_n \xrightarrow{\sim} Obs^q_n (I)$.  
+\item[(b)] The quasi-isomorphism extends to a $\Vect$-equivariant quasi-isomorphism.
+\end{itemize}
+\end{thm}
+
+\begin{cor}
+There is an equivalence of factorization algebras $\cF_{\hA_n} \xrightarrow{\sim} Obs^q_n$, from the one-dimensional factorization algebra determined by the associative algebra $\hA_n$ to the quantum observables of the formal theory on the formal $n$-disk.
+\end{cor}
+
+
+\subsubsection{The non-equivariant observables}
+
+This follows from Section \ref{sect:free}...
+
+Let $f_I$ be a smooth bump function of integral 1 with supported contained in the interval $I \subset \RR$.  There is a commutative diagram
+\[
+\xymatrix{
+\hA_n \ar[r]^{F_I} \ar@{=}[d] & Obs^q_n (I) \ar[d]\\ \CC[[t_i , \partial t_i ]] \ar[r]^{f_I} & Obs^{cl}_n (I) \ar@/_1pc/[u]
+}
+\]
+We abuse notation in the diagram above as the bottom map is determined by the bump function $f_I$, more explicitly, it is the assignment
+\[
+t_i \mapsto f_I dx \otimes t_i \quad \text{ and } \quad \partial t_i \mapsto f_I dx \otimes \partial t_i.
+\]
+
+\subsubsection{$\Vect$-equivariant observables}
+
+We now prove part (b) of Theorem \ref{thm:formalobsq}.  Define a map
+\[
+F_I^\Vect : C^\ast (\Vect ; \hA_n) \to \left ( \sO (\Vect[1]) \otimes Obs^q_n (I) , \widetilde{Q} \right ); \quad F_I^\Vect = \mathrm{Id} \otimes F_I.
+\]
+Recall from Section \ref{sect:eq_obs}, that the codomain of the map $F^\Vect_I$ is our definition of the $\Vect$-equivariant quantum observables on an interval $I$.
+
+\begin{prop}
+The map $F_I^\Vect : C^\ast (\Vect ; \hA_n) \to Obs^{q, \Vect}_n (I)$ is a cochain map.
+\end{prop}
+
+
+\ryan{rewrite the following paragraph}
+
+
+To show that the identification of $\cA_n$ with $\hA_n$ is
+$\Vect$-equivariant we must show that the BV bracket with t. Let $a \in \cA_n$ and pick
+a lift 
+\ben
+\Tilde{a} \in \bObs^q(I) .
+\een 
+Running tree level RG-flow we obtain a (non-smeared) observable
+$\{\Tilde{a}[L]\}$. Since the action of a formal vector field $\fX$ on
+$\Tilde{a}[L]$ is through the BV bracket it suffices to compute
+$\{I^{\rm W}_\fX [L] , \Tilde{a}[L]\}_L$. Likewise, the action of an element
+$\theta \in \hOmega^1_{n,cl}$ is the BV bracket with $J_\theta$.
+
+Since $I_\fX^{\rm W}$ is a local functional we see that the scale $L$
+bracket is equal
+to $\{I_\fX^{\rm W}, \Tilde{a}\}[L] = W(P_0^L, \{I_\fX^{\rm W},
+\Tilde{a}\})$. Likewise for the local functional $J$ and closed
+one-forms. So, to compute the action of $\Vect \ltimes \hOmega^1_{n,cl}$ on the
+quantum observables it suffices to compute $\{I_\fX^{\rm W} + \hbar
+J_\theta , -\}$ acting on observables.
+
+Hence, we are left to prove the following lemma.
+
+\begin{lem} Let $\fX \in \Vect$ and $\theta \in \hOmega^1_{n,cl}$. At the level of cohomology in $\Obs^q_n(I)$ we have
+\ben
+\left[ \{I_\fX^{\rm W}, a\} \right] = \fX \cdot [a]
+\een
+and 
+\ben
+\left[ \{J_\theta, a\} \right] = \theta \cdot [a]
+\een
+where on the right hand side we mean the natural action of formal
+vector fields and closed one-forms on the Weyl algebra $\hA_n$ by derivations. 
+\end{lem}
+\begin{proof}
+
+Let us first consider the local functional $I^{\rm W}_\fX \in \cloc^*(\DD
+\fg_n^\RR)$ associated to a fixed formal vector field $\fX \in \Vect$. It is
+of the form $I^{\rm W}_\fX = \int \cL_\fX \d x$ where $\cL_\fX : \DD \fg_n \to
+C^\infty(\RR)$ is the Lagrangian density. 
+
+Given any element $\omega \in \Omega^*_c(U)$ supported on an interval
+$U$ we obtain an observable in $\Obs^{cl}(U)$ by wedging and
+integrating 
+\ben
+\int \omega \wedge \cL_\fX \in \Obs^{cl}_n (U) . 
+\een 
+In particular, suppose $f$ is a bump function for the interval
+$U$. That is, $\int_U f \d x = 1$. Then, we can consider the
+observable 
+\ben
+\int f \d x \wedge \cL_\fX \in \Obs^{cl}_n(U) .
+\een
+It is easy to see that the cohomology class of this observable
+coincides with the element $\fX \in \cA_n$. \brian{should we write down
+  the formulas?}
+
+If we view $\fX$ as an element of the formal Weyl algebra then the
+action $\fX \cdot a$ is equal to the commutator $\frac{1}{\hbar} [\fX,
+a]$. We wish to show that the image of $\{I_\fX^{\rm W}, \tilde{a}\}$ in
+cohomology is equal to this commutator, which we proceed to compute.
+
+Suppose $U_{-1}$, $U_0$, $U_1$ are the intervals of length $1/2$
+centered at $-1$, $0$, and $1$ respectively. Fix a bump function $f$
+for the interval $U_0$ and let
+\ben
+(\tau_{-1} f)(x) = f(x+1) \;\; , \;\; (\tau_1 f)(x) = f(x-1) .
+\een 
+Define the function 
+\ben
+h (x) = \int_{s = 0}^{s = x} \left((\tau_{1} f) - (\tau_{-1} f) \right) \d
+s .
+\een
+
+Fix a closed element $a \in \Obs_n^q(U_0)$ and consider the observable
+$\int h \wedge \cL_\fX \in \Obs^q_n(\RR)$. The following is a direct calculation 
+\bestar
+(\d_{dR} + \hbar \Delta) \left( \left(\int h \wedge \cL_\fX\right) \cdot
+  a \right) & = & 
+\left(\int (\d_{dR} h) \wedge \cL_\fX \right) \cdot a 
++ \hbar \Delta \left( \left(\int h \wedge \cL_\fX\right) \cdot a \right) \\ & = & \left(\int (f_{1} \d x) \wedge \cL_\fX - \int (f_{-1} \d x)\wedge
+    \cL_\fX \right) \cdot a - \{I_\fX, a\} .
+\eestar 
+We have used the fact that $a$
+is a closed quantum observable by assumption so $(\d_{dR} + \hbar
+\Delta) a = 0$. We have also used the fact that $h$ is identically
+$-1$ on the interval $U_0$ so that $\int h \cL_\fX = I_\fX$ on $U_0$. 
+
+We conclude that in the complex $\Obs^q_n(\RR)$ the following relation holds
+\ben
+\hbar \{I^{\rm W}_\fX , a\} = I_\fX^{\rm W} ((\tau_{1} f) \d t - (\tau_{-1} f) \d t) \cdot
+a + \{{\rm exact\;terms}\} .
+\een
+In cohomology, the right hand side becomes $[\fX, [a] ]$ as desired,
+where $[a]$ is the cohomology class of $a$. 
+\end{proof}
+
+
+
+
+
+
+The proof of Theorem \ref{thm:formalobsq} is completed by the following lemma.
+
+\begin{lem}
+The map $F_I^{\Vect}$ is a quasi-isomorphism.
+\end{lem}
