@@ -157,11 +157,41 @@ a local functional of degree $-1$.
 \subsubsection{Proof of Proposition \ref{propdef}}
 
 To complete the proof of the proposition it remains to show that $J$
-is a quasi-isomorphism. This is a cohomological calculation. 
+is a quasi-isomorphism. This is a cohomological calculation. We first recall the non-scale invariant deformation complex.
 
-\brian{Insert your guys calculation here, adjusted to the formal disk.}
+\begin{lem}[Corollary 5.2 of \cite{GG1}]
+We have a quasi-isomorphism
+\[
+\hOmega^1_{n,cl} \oplus \hOmega^1_{n,cl}[1] \xrightarrow{\; \sim \;} \left(\Def_n\right)^{\Aff(\RR)} 
+\]
+\end{lem}
+
+We are left to verify that the map of the preceding lemma restricted to the second summand is $J$.  We also need to show that deformations coming from $\hOmega^1_{n,cl} [0]$ are not $R^\times$-invariant. Both of these claims are explicit computations.  
 
 
+First, recall that we have a quasi-isomorphism
+\[
+C^\ast_{red} (\fg_n) \oplus C^\ast_{red} (\fg_n) [1] \simeq \hOmega^1_{n,cl} \oplus \hOmega^1_{n,cl}[1].
+\]
+Next, let $(\cR^\ast, \delta)$ be the Koszul resolution of the trivial $\RR[\partial/\partial x]$-module $\RR dx$ i.e., let $\epsilon$ be square zero of cohomological degree -1 so $\cR^\ast = \RR [\epsilon, \partial/\partial x] dx$ with 
+\[
+\delta \epsilon = \frac{\partial}{\partial x} \; \; \text{ and } \; \; \delta \left ( \frac{\partial}{\partial x} \right )^k = \left ( \frac{\partial}{\partial x} \right )^{k+1} 
+\]
+We therefore need to trace from bottom right to bottom left in the following diagram. (Note that the quasi-isomorphism $PL$ follows from the Poincar\'e Lemma.)
+
+\begin{footnotesize}
+\[
+\xymatrix{ & \cR^\ast  \otimes_{\RR[\partial/\partial x]}   C^\ast_{red} (\fg_n [[x, dx]]) \ar[1,-1]_\simeq^{\epsilon \sim 0} \ar[1,1]^{\simeq}_{PL} &\\
+ \left (\mathrm{Dens}_\RR \right )^{\Aff(\RR)} \otimes_{D(\RR)^{\Aff(\RR)}}  \sO(J(E)_0)/\RR \ar[d]_{\cong} &&\cR^\ast \otimes_{\RR[\partial/\partial x]} C^\ast_{red} (\fg_n) \ar[d]^{\cong} \\
+ \left (\sO_{loc} (\sE)/\RR \right )^{\Aff(\RR)} && C^\ast_{red} (\fg_n) \epsilon dx \oplus C^\ast_{red} (\fg_n) dx
+}
+\]
+\end{footnotesize}
+
+It is straightforward (\ryan{too much?}) to see that a closed element $\theta \epsilon dx \in C^\ast_{red} (\fg_n) \epsilon dx$ maps to $J_\theta$ under this correspondence. Also, an element $f \in C^\ast_{red} (\fg_n)dx$ maps to integration of a potential function.  Any non-zero potential function will not be scale invariant.
+
+
+\ryan{Where do we use this lemma, it seems duplicated below?}
 
 \begin{lem} The first cohomology of $\Vect$ with coefficients in the
   module $\hOmega^1_{n,cl}$ is one dimensional
